@@ -1,6 +1,6 @@
 // --------------------------------------------------- //
 
-import { Role } from "../../utils/enum/role.enum";
+// import { Role } from "../../utils/enum/role.enum";
 
 // login model require field
 export interface LoginModel {
@@ -14,7 +14,7 @@ export interface UserModelFromToken {
     username: string;
     firstname: string;
     iat: 1650657067;
-    role: Role;
+    // role: Role;
     id: number;
     access_token: string;
   }
