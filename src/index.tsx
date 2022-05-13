@@ -1,23 +1,45 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import './index.css';
+import React from "react";
+import "./index.css";
+import App from "./App";
+import { store } from "./app/store";
+import { Provider } from "react-redux";
+import { createRoot } from "react-dom/client";
+// import createEmotionCache from "./utils/createEmotionCache";
+import { CacheProvider } from "@emotion/react";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./theme/theme";
+import { CssBaseline } from "@mui/material";
+import createCache from '@emotion/cache';
+import stylisRTLPlugin from 'stylis-plugin-rtl';
+import { BrowserRouter } from "react-router-dom";
 
-const container = document.getElementById('root')!;
+// Client-side cache, shared for the whole session of the user in the browser.
+// const clientSideEmotionCache = createEmotionCache();
+
+// interface MyAppProps {
+//   emotionCache?: EmotionCache;
+// }
+// Create rtl cache
+// Create rtl cache
+const cacheRtl = createCache({
+  key: "muirtl",
+  stylisPlugins: [stylisRTLPlugin]
+});
+
+const container: any = document.getElementById("root");
 const root = createRoot(container);
-
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <CacheProvider value={cacheRtl}>
+    <ThemeProvider theme={theme}>
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <CssBaseline />
+      <React.StrictMode>
+        <Provider store={store}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </Provider>
+      </React.StrictMode>
+    </ThemeProvider>
+  </CacheProvider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
