@@ -7,9 +7,7 @@ import FileCopyIcon from '@mui/icons-material/FileCopy';
 
 import { red } from '@mui/material/colors';
 import { Grid } from '@mui/material';
-import { countAll as countCitizens } from '../features/citizens/citizensSlice';
 import { countAll as countUsers } from '../features/users/userSlice';
-import { countAll as countReports } from '../features/reports/reportSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -18,19 +16,19 @@ const DashBoardCards = () => {
   let countCitizen : number = 0;
   let countUser : number = 0;
   let countReport : number = 0;
-   useSelector(
-    (state: any) => {
-      countCitizen = state.citizen.count;
-      countUser = state.users.count;
-      countReport = state.report.count;
-    }
-  );
+  //  useSelector(
+  //   (state: any) => {
+  //     countCitizen = state.citizen.count;
+  //     countUser = state.users.count;
+  //     countReport = state.report.count;
+  //   }
+  // );
 
   useEffect(()=> {
-    console.log(countCitizen)
-    dispatch(countCitizens())
-    dispatch(countUsers())
-    dispatch(countReports())
+    // console.log(countCitizen)
+    // dispatch(countCitizens())
+    // dispatch(countUsers())
+    // dispatch(countReports())
   }, [dispatch]);
 
   return (
@@ -44,20 +42,20 @@ const DashBoardCards = () => {
         
         <DashBordCardItem 
         key={1}
-        count={countUser} 
+        count={1} 
         title={Strings.userCounts} 
         icon={<AdminPanelSettingsIcon sx={{fontSize: 34, alignContent: 'center', color: red[500]}}/>} />
 
         <DashBordCardItem 
         key={2}
-        count={countCitizen} 
+        count={2} 
         title={Strings.citizenCount} 
         icon={<PeopleAltIcon sx={{fontSize: 34, alignContent: 'center', color: red[500]}}/>} />
 
         <DashBordCardItem 
         
         key={3}
-        count={countReport} 
+        count={3} 
         title={Strings.reportCount} 
         icon={<FileCopyIcon sx={{fontSize: 34, alignContent: 'center', color: red[500]}}/>} />
     </Grid>
