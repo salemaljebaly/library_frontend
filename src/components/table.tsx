@@ -14,14 +14,14 @@ import Strings from "../utils/Strings";
 import { Box } from "@mui/system";
 import { green, red } from "@mui/material/colors";
 import { useDispatch, useSelector } from "react-redux";
+import { DepartmentModel } from "../features/department/departmentModel";
 // import { CitizensModel } from "../features/citizens/citizensModel";
 // import { PolicOfficeModel } from "../features/police_officess/policeOfficesModel";
 // import { AboutModel } from "../features/about/aboutModel";
 // import { ReportsModel } from "../features/reports/reportsModel";
 
 interface Props {
-  data: UsersModel[] ;
-  // | CitizensModel[] | PolicOfficeModel[] | AboutModel[] | ReportsModel[];
+  data: UsersModel[] | DepartmentModel[];
   row : GridColDef[];
   action : any;
 }

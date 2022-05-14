@@ -40,6 +40,8 @@ import { AppDispatch } from "../app/store";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Users from "../pages/users/Users";
 import Register from "../pages/users/Register";
+import Departments from "../pages/department/Departments";
+import AddDepartment from "../pages/department/AddDepartment";
 
 const drawerWidth = 240;
 
@@ -142,7 +144,7 @@ export default function MiniDrawer() {
   const [menuSelect, setMenuSelected] = React.useState({
     main: false,
     user: false,
-    citizen: false,
+    department: false,
     report: false,
     policeOffice: false,
     about: false,
@@ -252,7 +254,7 @@ export default function MiniDrawer() {
                 setMenuSelected({
                   main: true,
                   user: false,
-                  citizen: false,
+                  department: false,
                   report: false,
                   policeOffice: false,
                   about: false,
@@ -273,7 +275,7 @@ export default function MiniDrawer() {
                 setMenuSelected({
                   main: false,
                   user: true,
-                  citizen: false,
+                  department: false,
                   report: false,
                   policeOffice: false,
                   about: false,
@@ -287,13 +289,13 @@ export default function MiniDrawer() {
             </ListItemButton>
           </Link>
 
-          <Link to="/citizens" style={linkStyle}>
+          <Link to="/departments" style={linkStyle}>
             <ListItemButton
-              selected={menuSelect.citizen}
+              selected={menuSelect.department}
               onClick={() => setMenuSelected({
                 main : false,
                 user : false,
-                citizen : true,
+                department : true,
                 report : false,
                 policeOffice : false,
                 about : false
@@ -313,7 +315,7 @@ export default function MiniDrawer() {
               onClick={() => setMenuSelected({
                 main : false,
                 user : false,
-                citizen : false,
+                department : false,
                 report : true,
                 policeOffice : false,
                 about : false
@@ -333,7 +335,7 @@ export default function MiniDrawer() {
               onClick={() => setMenuSelected({
                 main : false,
                 user : false,
-                citizen : false,
+                department : false,
                 report : false,
                 policeOffice : true,
                 about : false
@@ -353,7 +355,7 @@ export default function MiniDrawer() {
               onClick={() => setMenuSelected({
                 main : false,
                 user : false,
-                citizen : false,
+                department : false,
                 report : false,
                 policeOffice : false,
                 about : true
@@ -385,11 +387,12 @@ export default function MiniDrawer() {
             <Route path=":id" element={<Register />} />
           </Route>
 
-          {/* <Route path="citizens" element={<Citizens />} />
-          <Route path="citizen" element={<AddCitizen />}>
-            <Route path=":id" element={<AddCitizen />} />
+           <Route path="departments" element={<Departments />} />
+          <Route path="department" element={<AddDepartment />}>
+            <Route path=":id" element={<AddDepartment />} />
           </Route>
 
+          {/*
           <Route path="police-offices" element={<PolicesOffices />} />
           <Route path="police-office" element={<AddPoliceOffice />}>
             <Route path=":id" element={<AddPoliceOffice />} />

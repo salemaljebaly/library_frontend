@@ -83,5 +83,10 @@ export default class{
   static API_URL : string = "http://localhost:4000/";
   static report: string = " بلاغ ";
   static reports: string = " البلاغات ";
+  // --------------------------------------------------- //
+  static departments : string = 'الاقسام';
+  static department : string = 'قسم';
+  static dep_name : string = 'اسم القسم';
+  static dep_code : string = 'كود القسم';
 
 }
