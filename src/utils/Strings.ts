@@ -1,5 +1,5 @@
 export default class{
-    static appName:string = "لوحة تحكم نظام البلاغات";
+    static appName:string = "مكتبة الكترونية";
     static menuColor :string = '#F9F9F9';
     // --------------------------------------------------------------- //
     // control page direction
@@ -19,7 +19,7 @@ export default class{
     static lastName: string = "الأسم الأخير";
     static email: string = "الايميل";
     static activeUser: string = "تفعيل المستخدم";
-    static activeCitizen: string = "تفعيل حساب المواطن";
+    static activeCitizen: string = "تفعيل العضوية";
     static normalUser : string = "مستخدم عادي";
     static admin : string = "مدير";
     static permission :string = "الصلاحية";

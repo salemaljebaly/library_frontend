@@ -38,6 +38,8 @@ import { logout } from "../features/auth/authSlice";
 import { UserState } from "../features/auth/AuthModel";
 import { AppDispatch } from "../app/store";
 import Dashboard from "../pages/dashboard/Dashboard";
+import Users from "../pages/users/Users";
+import Register from "../pages/users/Register";
 
 const drawerWidth = 240;
 
@@ -111,7 +113,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 // -------------------------------------------------------------------------------- //
-const linkColor = red[300];
+const linkColor = '#6266ea';
 const linkStyle = {
   // margin: "1rem",
   textDecoration: "none",
@@ -377,12 +379,13 @@ export default function MiniDrawer() {
         {/* <Register /> */}
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          {/* <Route path="users" element={<Users />}></Route>
+          <Route path="/register" element={<Register />} />
+          <Route path="users" element={<Users />}></Route>
           <Route path="/user" element={<Register />}>
             <Route path=":id" element={<Register />} />
           </Route>
 
-          <Route path="citizens" element={<Citizens />} />
+          {/* <Route path="citizens" element={<Citizens />} />
           <Route path="citizen" element={<AddCitizen />}>
             <Route path=":id" element={<AddCitizen />} />
           </Route>
