@@ -11,9 +11,7 @@ export const userColumns: GridColDef[] = [
     {
       field: 'fullName',
       headerName: Strings.fullName,
-      width: 200,
-      valueGetter: (params: GridValueGetterParams) =>
-        `${params.row.firstName  || ''} ${params.row.lastName || ''}`,
+      width: 200
     },
     { field: 'email', headerName: Strings.email.toString(), width: 200 },
     { field: 'isActive', headerName: Strings.isActive.toString(), width: 130 , 

@@ -6,9 +6,8 @@ import { ErrorResponse } from "./ErrorResponse";
 export interface UserModel {
   id?: number;
   email: string;
-  firstName: string;
+  fullName: string;
   isActive: boolean;
-  lastName: string;
   password: string;
   role: string;
   username: string;
@@ -24,8 +23,7 @@ export interface LoginModel {
 // extract data from UserModelFromToken
 export interface UserModelFromToken {
   username: string;
-  firstname: string;
-  lastName: string;
+  fullName: string;
   iat: number;
   role: Role;
   id: number;
@@ -49,8 +47,7 @@ export interface UserState {
 // user all fields
 export interface UsersModel {
   id: number;
-  firstName: string;
-  lastName: string;
+  fullName: string;
   username: string;
   email: string;
   password?: string;
