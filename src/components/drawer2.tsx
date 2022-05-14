@@ -26,7 +26,6 @@ import AppLogo from "./appLogo";
 import { AccountCircle } from "@mui/icons-material";
 import theme from "../theme/theme";
 import DashBoardCards from "./dashBoardCards";
-import DataTable from "./table";
 import {
   Link,
   Route,
@@ -38,6 +37,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import { UserState } from "../features/auth/AuthModel";
 import { AppDispatch } from "../app/store";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 const drawerWidth = 240;
 
@@ -375,9 +375,9 @@ export default function MiniDrawer() {
         {/* <Box sx={{ marginBottom: 3 }} /> */}
         {/* <DataTable /> */}
         {/* <Register /> */}
-        {/* <Routes>
+        <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="users" element={<Users />}></Route>
+          {/* <Route path="users" element={<Users />}></Route>
           <Route path="/user" element={<Register />}>
             <Route path=":id" element={<Register />} />
           </Route>
@@ -400,8 +400,8 @@ export default function MiniDrawer() {
           <Route path="reports" element={<Reports />} />
           <Route path="report" element={<AddReport />}>
             <Route path=":id" element={<AddReport />} />
-          </Route>
-        </Routes> */}
+          </Route> */}
+        </Routes>
       </Box>
     </Box>
   );

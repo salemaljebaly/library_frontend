@@ -1,11 +1,23 @@
-import './App.css';
-import SignIn from './pages/users/signIn';
+import { useSelector } from "react-redux";
+import MiniDrawer from "./components/drawer2";
 
+import {BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import SignIn from "./pages/users/signIn";
 function App() {
+  // desctruct memebers from user state [ userSlice]
+  const { user, isError, isSucces, isLoading, message } = useSelector(
+    (state: any) => state.auth
+  );
   return (
-    <div className="App">
-      <SignIn />
-    </div>
+    <>
+      {user ? (
+        <MiniDrawer />
+      ) : (
+        <Routes>
+          <Route path="/login" element={<SignIn />} />
+        </Routes>
+      )}
+    </>
   );
 }
 
