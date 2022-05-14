@@ -34,22 +34,10 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { red } from "@mui/material/colors";
-import Register from "../pages/users/Register";
-import Dashboard from "../pages/dashboard/Dashboard";
-import About from "../pages/About";
-import PolicesOffices from "../pages/police_offices/PoliceOffices";
-import Citizens from "../pages/citizens/Citizens";
-import Users from "../pages/users/Users";
 import { useDispatch, useSelector } from "react-redux";
-import SignIn from "../pages/users/signIn";
 import { logout } from "../features/auth/authSlice";
-import AddCitizen from "../pages/citizens/addCitizen";
-import Abouts from "../pages/about/Abouts";
-import AddPoliceOffice from "../pages/police_offices/AddPoliceOffice";
-import AddAbout from "../pages/about/AddAbout";
-import AddReport from "../pages/reports/AddReport";
-import Reports from "../pages/reports/Reports";
 import { UserState } from "../features/auth/AuthModel";
+import { AppDispatch } from "../app/store";
 
 const drawerWidth = 240;
 
@@ -133,7 +121,7 @@ const linkStyle = {
 // -------------------------------------------------------------------------------- //
 
 export default function MiniDrawer() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   // ----------------------------------------------------------------------------------- //
   // desctruct memebers from user state [ userSlice]
@@ -387,7 +375,7 @@ export default function MiniDrawer() {
         {/* <Box sx={{ marginBottom: 3 }} /> */}
         {/* <DataTable /> */}
         {/* <Register /> */}
-        <Routes>
+        {/* <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="users" element={<Users />}></Route>
           <Route path="/user" element={<Register />}>
@@ -413,7 +401,7 @@ export default function MiniDrawer() {
           <Route path="report" element={<AddReport />}>
             <Route path=":id" element={<AddReport />} />
           </Route>
-        </Routes>
+        </Routes> */}
       </Box>
     </Box>
   );
