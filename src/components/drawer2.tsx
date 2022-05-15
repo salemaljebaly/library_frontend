@@ -44,6 +44,8 @@ import Departments from "../pages/department/Departments";
 import AddDepartment from "../pages/department/AddDepartment";
 import AddMember from "../pages/members/addMember";
 import Members from "../pages/members/Members";
+import Books from "../pages/books/Books";
+import AddBook from "../pages/books/AddBook";
 
 const drawerWidth = 240;
 
@@ -148,7 +150,7 @@ export default function MiniDrawer() {
     user: false,
     department: false,
     member: false,
-    policeOffice: false,
+    book: false,
     about: false,
   });
 
@@ -258,7 +260,7 @@ export default function MiniDrawer() {
                   user: false,
                   department: false,
                   member: false,
-                  policeOffice: false,
+                  book: false,
                   about: false,
                 })
               }
@@ -279,7 +281,7 @@ export default function MiniDrawer() {
                   user: true,
                   department: false,
                   member: false,
-                  policeOffice: false,
+                  book: false,
                   about: false,
                 })
               }
@@ -299,7 +301,7 @@ export default function MiniDrawer() {
                 user : false,
                 department : true,
                 member :  false,
-                policeOffice : false,
+                book : false,
                 about : false
             
               })}
@@ -319,7 +321,7 @@ export default function MiniDrawer() {
                 user : false,
                 department : false,
                 member :  true,
-                policeOffice : false,
+                book : false,
                 about : false
             
               })}
@@ -331,15 +333,15 @@ export default function MiniDrawer() {
             </ListItemButton>
           </Link>
 
-          <Link to="/police-offices" style={linkStyle}>
+          <Link to="/books" style={linkStyle}>
             <ListItemButton
-              selected={menuSelect.policeOffice}
+              selected={menuSelect.book}
               onClick={() => setMenuSelected({
                 main : false,
                 user : false,
                 department : false,
                 member :  false,
-                policeOffice : true,
+                book : true,
                 about : false
             
               })}
@@ -359,7 +361,7 @@ export default function MiniDrawer() {
                 user : false,
                 department : false,
                 member :  false,
-                policeOffice : false,
+                book : false,
                 about : true
             
               })}
@@ -400,12 +402,12 @@ export default function MiniDrawer() {
             <Route path=":id" element={<AddMember />} />
           </Route>
           
-          {/*
-          <Route path="abouts" element={<Abouts />} />
-          <Route path="about" element={<AddAbout />}>
-            <Route path=":id" element={<AddAbout />} />
+          
+          <Route path="books" element={<Books />} />
+          <Route path="book" element={<AddBook />}>
+            <Route path=":id" element={<AddBook />} />
           </Route>
-
+          {/*
           <Route path="reports" element={<Reports />} />
           <Route path="report" element={<AddReport />}>
             <Route path=":id" element={<AddReport />} />

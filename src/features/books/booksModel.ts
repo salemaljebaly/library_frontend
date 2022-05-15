@@ -17,13 +17,6 @@ export interface BookModel {
     returnDate: string  
 }
 // --------------------------------------------------- //
-// login model require field
-export interface LoginModel {
-  username: string;
-  password: string;
-}
-
-// --------------------------------------------------- //
 // return user from redux state
 export interface BookState {
   books: BookModel[] | [];

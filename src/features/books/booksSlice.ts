@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./booksService";
-import { LoginModel, BookModel, BookState } from "./booksModel";
+import { BookModel, BookState } from "./booksModel";
 import { RootState } from "../../app/store";
 import { UserModelFromToken } from "../users/userModel";
 import { BookStateType } from "./bookType";
@@ -99,7 +99,7 @@ export const deleteById = createAsyncThunk (
 // update book by id
 export const updateById = createAsyncThunk (
   "book/updateById",
-  async ({bookData, depId}:{bookData : Partial<BookModel>, depId : number}, thunkAPI) => {
+  async (bookData : BookModel, thunkAPI) => {
     try {
       const {id, ...fields} = bookData;
       return await authService.updateById(user.access_token, id!,fields);

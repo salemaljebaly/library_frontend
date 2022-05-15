@@ -1,4 +1,5 @@
 import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { BookStateType } from "../../features/books/bookType";
 import { MemberType } from "../../features/members/memberType.enum";
 import { UserModel } from "../../features/users/userModel";
 import { ReportState, ReportStateArabic, ReportType, ReportTypeArabic } from "../../utils/enum/reporttype";
@@ -61,3 +62,45 @@ export const userColumns: GridColDef[] = [
   ];
     
 
+  export const BookColumns: GridColDef[] = [
+    { field: 'id', headerName: Strings.id, width: 70 },
+    {
+      field: 'bookName',
+      headerName: Strings.bookName,
+      width: 100
+    },
+    {
+      field: 'bookPublishDate',
+      headerName: Strings.bookPublishDate,
+      width: 100
+    },
+    {
+      field: 'authorName',
+      headerName: Strings.authorName,
+      width: 100
+    },
+    {
+      field: 'bookPages',
+      headerName: Strings.bookPages,
+      width: 80
+    },
+    {
+      field: 'bookPublisher',
+      headerName: Strings.bookPublisher,
+      width: 150
+    },
+    {
+      field: 'bookDescription',
+      headerName: Strings.bookDescription,
+      width: 200
+    },
+    {
+      field: 'returnDate',
+      headerName: Strings.returnDate,
+      width: 100
+    },
+    { field: 'state', headerName: Strings.memberType.toString(), width: 120 ,
+    valueGetter: (params: GridValueGetterParams) =>
+        `${params.row.state == BookStateType.STAYED ? Strings.stayed : Strings.barrowed}`,
+  },
+  ];

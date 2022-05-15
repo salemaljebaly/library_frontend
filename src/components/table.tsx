@@ -16,13 +16,14 @@ import { green, red } from "@mui/material/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { DepartmentModel } from "../features/department/departmentModel";
 import { MemberModel } from "../features/members/membersModel";
+import { BookModel } from "../features/books/booksModel";
 // import { CitizensModel } from "../features/citizens/citizensModel";
 // import { PolicOfficeModel } from "../features/police_officess/policeOfficesModel";
 // import { AboutModel } from "../features/about/aboutModel";
 // import { ReportsModel } from "../features/reports/reportsModel";
 
 interface Props {
-  data: UsersModel[] | DepartmentModel[] | MemberModel[];
+  data: UsersModel[] | DepartmentModel[] | MemberModel[] | BookModel[];
   row : GridColDef[];
   action : any;
 }

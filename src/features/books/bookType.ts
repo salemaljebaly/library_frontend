@@ -9,6 +9,10 @@ export enum BookStateType {
     BARROWED = "Barrowed",
 }
 
+export enum BookStateTypeArabic{
+    STAYED = "متوفر",
+    BARROWED = "تمت الاعارة",
+}
 export enum FileTypes  {
     JPG = "jpg",
     JPEG = "jpeg",

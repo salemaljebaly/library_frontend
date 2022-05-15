@@ -76,24 +76,35 @@ export default class{
     lng : 15.16091104212196
   };
   // --------------------------------------------------- //
-  static reportDesc: string = "وصف البلاغ";
-  static reportType: string = "نوع البلاغ";
-  static reprortState: string = "حالة البلاغ";
-  static reportImage: string = "صورة البلاغ";
   static API_URL : string = "http://localhost:4000/";
-  static report: string = " بلاغ ";
-  static reports: string = " البلاغات ";
   // --------------------------------------------------- //
+  // الاقسام
   static departments : string = 'الاقسام';
   static department : string = 'قسم';
   static dep_name : string = 'اسم القسم';
   static dep_code : string = 'كود القسم';
   // --------------------------------------------------- //
+  // members
   static members : string = ' العضويات ';
   static member : string = ' عضوية ';
   static student : string = ' طالب' ;
   static teacher : string = ' مدرس' ;
   static memberType : string = 'نوع العضوية';
   // --------------------------------------------------- //
+  // book
+  static book : string = ' كتاب ';
+  static bookImage : string = 'صورة الكتاب';
+  static books : string = 'الكتب';
+  static bookName: string = 'الاسم';
+  static bookPublishDate: string = 'تاريخ النشر ';
+  static authorName: string = 'المؤلف';
+  static bookPages: string = 'عدد الصفحات';
+  static bookPublisher: string = 'دار النشر';
+  static bookDescription: string = 'الوصف';
+  static returnDate: string = 'تاريخ الاعادة';
+  static stayed: string = 'موجود';
+  static barrowed: string = 'تمت الاعارة';
+  static state: string = 'حالة الكتاب';
+  static control : string = 'التحكم';
 
 }
