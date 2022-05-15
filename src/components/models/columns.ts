@@ -1,4 +1,5 @@
 import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { MemberType } from "../../features/members/memberType.enum";
 import { UserModel } from "../../features/users/userModel";
 import { ReportState, ReportStateArabic, ReportType, ReportTypeArabic } from "../../utils/enum/reporttype";
 import { Role } from "../../utils/enum/role.enum";
@@ -26,10 +27,37 @@ export const userColumns: GridColDef[] = [
 
 
   
-export const DepartmentColumns: GridColDef[] = [
-  { field: 'id', headerName: Strings.id, width: 70 },
-  { field: 'dep_code', headerName: Strings.dep_code.toString(), width: 300 },
-  { field: 'dep_name', headerName: Strings.dep_name.toString(), width: 300 },
-];
+  export const DepartmentColumns: GridColDef[] = [
+    { field: 'id', headerName: Strings.id, width: 70 },
+    { field: 'dep_code', headerName: Strings.dep_code.toString(), width: 300 },
+    { field: 'dep_name', headerName: Strings.dep_name.toString(), width: 300 },
+  ];
 
+  
+  export const MembersColumns: GridColDef[] = [
+    { field: 'id', headerName: Strings.id, width: 70 },
+    {
+      field: 'fullName',
+      headerName: Strings.fullName,
+      width: 200
+    },
+    {
+      field: 'dep_name',
+      headerName: Strings.dep_name,
+      width: 120,
+      valueGetter: (params: GridValueGetterParams) =>
+        `${params.row.department.dep_name }`,
+    },
+    { field: 'username', headerName: Strings.userName.toString(), width: 120 },
+    { field: 'email', headerName: Strings.email.toString(), width: 200 },
+    { field: 'isActive', headerName: Strings.isActive.toString(), width: 130 , 
+    valueGetter: (params: GridValueGetterParams) =>
+        `${params.row.isActive ? 'مفعل' : 'غير مفعل'}`,
+  },
+    { field: 'memberType', headerName: Strings.memberType.toString(), width: 130 ,
+    valueGetter: (params: GridValueGetterParams) =>
+        `${params.row.memberType == MemberType.Teacher ? Strings.teacher : Strings.student}`,
+  },
+  ];
+    
 

@@ -88,5 +88,12 @@ export default class{
   static department : string = 'قسم';
   static dep_name : string = 'اسم القسم';
   static dep_code : string = 'كود القسم';
+  // --------------------------------------------------- //
+  static members : string = ' العضويات ';
+  static member : string = ' عضوية ';
+  static student : string = ' طالب' ;
+  static teacher : string = ' مدرس' ;
+  static memberType : string = 'نوع العضوية';
+  // --------------------------------------------------- //
 
 }

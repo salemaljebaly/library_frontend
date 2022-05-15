@@ -42,6 +42,8 @@ import Users from "../pages/users/Users";
 import Register from "../pages/users/Register";
 import Departments from "../pages/department/Departments";
 import AddDepartment from "../pages/department/AddDepartment";
+import AddMember from "../pages/members/addMember";
+import Members from "../pages/members/Members";
 
 const drawerWidth = 240;
 
@@ -145,7 +147,7 @@ export default function MiniDrawer() {
     main: false,
     user: false,
     department: false,
-    report: false,
+    member: false,
     policeOffice: false,
     about: false,
   });
@@ -255,7 +257,7 @@ export default function MiniDrawer() {
                   main: true,
                   user: false,
                   department: false,
-                  report: false,
+                  member: false,
                   policeOffice: false,
                   about: false,
                 })
@@ -276,7 +278,7 @@ export default function MiniDrawer() {
                   main: false,
                   user: true,
                   department: false,
-                  report: false,
+                  member: false,
                   policeOffice: false,
                   about: false,
                 })
@@ -296,7 +298,7 @@ export default function MiniDrawer() {
                 main : false,
                 user : false,
                 department : true,
-                report : false,
+                member :  false,
                 policeOffice : false,
                 about : false
             
@@ -309,14 +311,14 @@ export default function MiniDrawer() {
             </ListItemButton>
           </Link>
 
-          <Link to="/reports" style={linkStyle}>
+          <Link to="/members" style={linkStyle}>
             <ListItemButton
-              selected={menuSelect.report}
+              selected={menuSelect.member}
               onClick={() => setMenuSelected({
                 main : false,
                 user : false,
                 department : false,
-                report : true,
+                member :  true,
                 policeOffice : false,
                 about : false
             
@@ -336,7 +338,7 @@ export default function MiniDrawer() {
                 main : false,
                 user : false,
                 department : false,
-                report : false,
+                member :  false,
                 policeOffice : true,
                 about : false
             
@@ -356,7 +358,7 @@ export default function MiniDrawer() {
                 main : false,
                 user : false,
                 department : false,
-                report : false,
+                member :  false,
                 policeOffice : false,
                 about : true
             
@@ -392,12 +394,13 @@ export default function MiniDrawer() {
             <Route path=":id" element={<AddDepartment />} />
           </Route>
 
-          {/*
-          <Route path="police-offices" element={<PolicesOffices />} />
-          <Route path="police-office" element={<AddPoliceOffice />}>
-            <Route path=":id" element={<AddPoliceOffice />} />
+          
+          <Route path="members" element={<Members />} />
+          <Route path="member" element={<AddMember />}>
+            <Route path=":id" element={<AddMember />} />
           </Route>
-
+          
+          {/*
           <Route path="abouts" element={<Abouts />} />
           <Route path="about" element={<AddAbout />}>
             <Route path=":id" element={<AddAbout />} />
