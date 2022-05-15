@@ -88,10 +88,10 @@ import { MemberType } from "../../features/members/memberType.enum";
         navigate('/members')
       }
       // ----------------------------------------------------------------------- //
+      // TODO fix update
       // git user by id
       if (id != undefined) {
         dispatch(findById(Number(id)));
-        console.log(singleMember.department)
         setDepartment(Number.parseInt(singleMember.department.id));
       }
       // ----------------------------------------------------------------------- //
