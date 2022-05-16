@@ -4,6 +4,7 @@ import userReducer from '../features/users/userSlice'
 import departmentReducer from '../features/department/departmentSlice'
 import memberReducer from '../features/members/membersSlice'
 import bookReducer from '../features/books/booksSlice'
+import barrowReducer from '../features/barrows/barrowsSlice'
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     users : userReducer,
     departments : departmentReducer,
     members : memberReducer,
-    books : bookReducer
+    books : bookReducer, 
+    barrows : barrowReducer
   },
 });
 
