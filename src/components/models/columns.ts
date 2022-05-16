@@ -94,11 +94,6 @@ export const userColumns: GridColDef[] = [
       headerName: Strings.bookDescription,
       width: 200
     },
-    {
-      field: 'returnDate',
-      headerName: Strings.returnDate,
-      width: 100
-    },
     { field: 'state', headerName: Strings.memberType.toString(), width: 120 ,
     valueGetter: (params: GridValueGetterParams) =>
         `${params.row.state == BookStateType.STAYED ? Strings.stayed : Strings.barrowed}`,

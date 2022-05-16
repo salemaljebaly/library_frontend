@@ -13,8 +13,7 @@ export interface BookModel {
     bookDescription: string,
     state: BookStateType.STAYED,
     bookFilePath: string,
-    fileType: string,
-    returnDate: string  
+    fileType: string
 }
 // --------------------------------------------------- //
 // return user from redux state

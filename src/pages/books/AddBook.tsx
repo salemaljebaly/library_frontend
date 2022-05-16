@@ -224,25 +224,6 @@ function AddBook() {
               <TextField
                 required
                 fullWidth
-                id="returnDate"
-                label={Strings.returnDate}
-                value={singleBook.returnDate}
-                onChange={(e) =>
-                  dispatch(
-                    handleChangeData({
-                      name: e.target.name,
-                      value: e.target.value,
-                    })
-                  )
-                }
-                name="returnDate"
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
                 id="bookPublishDate"
                 label={Strings.bookPublishDate}
                 value={singleBook.bookPublishDate}
@@ -287,7 +268,7 @@ function AddBook() {
                 </Select>
               </FormControl>
             </Grid>
-
+            {/* TODO remove reterun date field */}
             {/* <Grid item xs={12}  sm={6}>
             <label htmlFor="contained-button-file">
               <Input inputProps={{ accept: 'image/*', hidden : true }} sx={{display: 'none'}} id="contained-button-file" type="file" 
