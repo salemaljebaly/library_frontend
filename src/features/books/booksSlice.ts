@@ -22,7 +22,7 @@ const initialState : BookState = {
 // Register book
 export const add = createAsyncThunk(
   "book/add",
-  async ({book, depId} : {book: BookModel, depId : number}, thunkAPI) => {
+  async (book: BookModel, thunkAPI) => {
     try {
       console.log(thunkAPI);
       return await authService.add(book, user.access_token.toString());

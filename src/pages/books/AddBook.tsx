@@ -65,7 +65,6 @@ function AddBook() {
     if (id === undefined) {
       const singleUserObjectHasDataOrNot: boolean =
         Object.keys(singleBook).length > 0 && true;
-
       dispatch(add(singleBook));
     } else {
       // update user by id
@@ -130,7 +129,7 @@ function AddBook() {
                 fullWidth
                 id="bookName"
                 label={Strings.bookName}
-                value={singleBook["bookName"]}
+                value={singleBook.bookName}
                 onChange={(e) =>
                   dispatch(
                     handleChangeData({
@@ -149,7 +148,7 @@ function AddBook() {
                 fullWidth
                 id="authorName"
                 label={Strings.authorName}
-                value={singleBook["authorName"]}
+                value={singleBook.authorName}
                 onChange={(e) =>
                   dispatch(
                     handleChangeData({
@@ -168,12 +167,12 @@ function AddBook() {
                 fullWidth
                 id="bookPages"
                 label={Strings.bookPages}
-                value={singleBook["bookPages"]}
+                value={Number.parseInt(singleBook.bookPages)}
                 onChange={(e) =>
                   dispatch(
                     handleChangeData({
                       name: e.target.name,
-                      value: e.target.value,
+                      value: Number.parseInt(e.target.value),
                     })
                   )
                 }
@@ -187,7 +186,7 @@ function AddBook() {
                 fullWidth
                 id="bookPublisher"
                 label={Strings.bookPublisher}
-                value={singleBook["bookPublisher"]}
+                value={singleBook.bookPublisher}
                 onChange={(e) =>
                   dispatch(
                     handleChangeData({
@@ -206,7 +205,7 @@ function AddBook() {
                 fullWidth
                 id="bookDescription"
                 label={Strings.bookDescription}
-                value={singleBook["bookDescription"]}
+                value={singleBook.bookDescription}
                 onChange={(e) =>
                   dispatch(
                     handleChangeData({
@@ -225,7 +224,7 @@ function AddBook() {
                 fullWidth
                 id="returnDate"
                 label={Strings.returnDate}
-                value={singleBook["returnDate"]}
+                value={singleBook.returnDate}
                 onChange={(e) =>
                   dispatch(
                     handleChangeData({
@@ -244,7 +243,7 @@ function AddBook() {
                 fullWidth
                 id="bookPublishDate"
                 label={Strings.bookPublishDate}
-                value={singleBook["bookPublishDate"]}
+                value={singleBook.bookPublishDate}
                 onChange={(e) =>
                   dispatch(
                     handleChangeData({
@@ -266,7 +265,7 @@ function AddBook() {
                   name="state"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={singleBook["state"]}
+                  value={singleBook.state}
                   label={Strings.state}
                   onChange={(e) =>
                     dispatch(
