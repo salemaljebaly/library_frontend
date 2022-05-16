@@ -18,7 +18,7 @@ const AppLogo : React.FC<Props> = (props) => {
     >
       <Box
         component="img"
-        src="/images/icons/sos_logo.svg"
+        src="/images/icons/library_logo.svg"
         alt="Picture of the author"
         width={imageSize}
         height={imageSize}

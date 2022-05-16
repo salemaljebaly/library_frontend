@@ -17,8 +17,6 @@ import ListItemText from "@mui/material/ListItemText";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import FileCopyIcon from "@mui/icons-material/FileCopy";
-import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
 import InfoIcon from "@mui/icons-material/Info";
 import Strings from "../utils/Strings";
 import { ListItemButton, Menu, MenuItem, ListItem, Theme } from "@mui/material";
@@ -46,6 +44,10 @@ import AddMember from "../pages/members/addMember";
 import Members from "../pages/members/Members";
 import Books from "../pages/books/Books";
 import AddBook from "../pages/books/AddBook";
+import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
+import CardMembershipRoundedIcon from '@mui/icons-material/CardMembershipRounded';
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 
 const drawerWidth = 240;
 
@@ -246,7 +248,7 @@ export default function MiniDrawer() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <AppLogo imageSize={80} />
+        <AppLogo imageSize={100} />
         <Divider />
 
         {/* // --------------------------------------------------------------- // */}
@@ -307,9 +309,9 @@ export default function MiniDrawer() {
               })}
             >
               <ListItemIcon>
-                <PeopleAltIcon sx={{ color: linkColor }} />
+                <SchoolOutlinedIcon sx={{ color: linkColor }} />
               </ListItemIcon>
-              <ListItemText primary={Strings.menuCitizen} />
+              <ListItemText primary={Strings.departments} />
             </ListItemButton>
           </Link>
 
@@ -327,9 +329,9 @@ export default function MiniDrawer() {
               })}
             >
               <ListItemIcon>
-                <FileCopyIcon sx={{ color: linkColor }} />
+                <CardMembershipRoundedIcon  sx={{ color: linkColor }} />
               </ListItemIcon>
-              <ListItemText primary={Strings.menuReports} />
+              <ListItemText primary={Strings.members} />
             </ListItemButton>
           </Link>
 
@@ -347,13 +349,13 @@ export default function MiniDrawer() {
               })}
             >
               <ListItemIcon>
-                <LocalPoliceIcon sx={{ color: linkColor }} />
+                <MenuBookRoundedIcon  sx={{ color: linkColor }} />
               </ListItemIcon>
-              <ListItemText primary={Strings.menuPolicesOffices} />
+              <ListItemText primary={Strings.books} />
             </ListItemButton>
           </Link>
 
-          <Link to="/abouts" style={linkStyle}>
+          <Link to="/barrows" style={linkStyle}>
             <ListItemButton
               selected={menuSelect.about}
               onClick={() => setMenuSelected({
@@ -367,9 +369,9 @@ export default function MiniDrawer() {
               })}
             >
               <ListItemIcon>
-                <InfoIcon sx={{ color: linkColor }} />
+                <BookmarkAddIcon  sx={{ color: linkColor }} />
               </ListItemIcon>
-              <ListItemText primary={Strings.menuAdditionInfo} />
+              <ListItemText primary={Strings.barrows} />
             </ListItemButton>
           </Link>
         </List>

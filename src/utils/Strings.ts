@@ -107,5 +107,8 @@ export default class{
   static state: string = 'حالة الكتاب';
   static control : string = 'التحكم';
   static uploadImage : string = 'رفع صورة';
+  // --------------------------------------------------- //
+  // barrows
+  static barrows : string = 'الإعارة';
 
 }

@@ -36,7 +36,6 @@ import {
 } from "../../utils/enum/reporttype";
 import { AppDispatch } from "../../app/store";
 import { BookStateType, BookStateTypeArabic } from "../../features/books/bookType";
-import styled from "@emotion/styled/types/base";
 
 function AddBook() {
   // ------------------------------------------------------------------------------- //
@@ -89,6 +88,14 @@ function AddBook() {
     }
     // ----------------------------------------------------------------------- //
   }, [dispatch, processDone]);
+  // -------------------------------------------------------------- //
+  const [value, setValue] = React.useState<Date | null>(
+    new Date('2014-08-18T21:11:54'),
+  );
+
+  const handleChange = (newValue: Date | null) => {
+    setValue(newValue);
+  };
   // -------------------------------------------------------------- //
   if (isLoading) {
     return (
@@ -219,7 +226,7 @@ function AddBook() {
                 name="bookDescription"
               />
             </Grid>
-
+            
             <Grid item xs={12} sm={6}>
               <TextField
                 required
