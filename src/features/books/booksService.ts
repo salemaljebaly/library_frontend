@@ -4,7 +4,7 @@ import { BookModel } from "./booksModel";
 const API_URL = "http://localhost:4000/";
 const path = "book";
 
-// Register citizen
+// Register Book
 const add = async (data: BookModel, access_token: string) => {
   const config = {
     headers: {
@@ -12,6 +12,22 @@ const add = async (data: BookModel, access_token: string) => {
     },
   };
   const response = await axios.post(API_URL + path , data, config);
+  if(data.bookFilePath != null){upload(data.bookFilePath, data.id, access_token)}
+  return response.data;
+};  
+
+// upload image
+const upload = async (path : string, bookId : number, access_token: string) => {
+
+  const data = new FormData();
+  data.append('file', path);
+  data.append('bookId', bookId.toString());
+  const config = {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  };
+  const response = await axios.post(API_URL + path + '/' + upload , data, config);
 
   return response.data;
 };
@@ -58,8 +74,8 @@ const updateById = async (
     userData,
     config
   );
-  const retrunCitizenData = findByID(access_token, id);
-  return retrunCitizenData;
+  const retrunBookData = findByID(access_token, id);
+  return retrunBookData;
 };
 
 // update user from database

@@ -106,5 +106,6 @@ export default class{
   static barrowed: string = 'تمت الاعارة';
   static state: string = 'حالة الكتاب';
   static control : string = 'التحكم';
+  static uploadImage : string = 'رفع صورة';
 
 }

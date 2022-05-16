@@ -8,6 +8,7 @@ import {
   FormControl,
   FormControlLabel,
   Grid,
+  Input,
   InputLabel,
   MenuItem,
   Select,
@@ -35,6 +36,7 @@ import {
 } from "../../utils/enum/reporttype";
 import { AppDispatch } from "../../app/store";
 import { BookStateType, BookStateTypeArabic } from "../../features/books/bookType";
+import styled from "@emotion/styled/types/base";
 
 function AddBook() {
   // ------------------------------------------------------------------------------- //
@@ -286,6 +288,25 @@ function AddBook() {
               </FormControl>
             </Grid>
 
+            {/* <Grid item xs={12}  sm={6}>
+            <label htmlFor="contained-button-file">
+              <Input inputProps={{ accept: 'image/*', hidden : true }} sx={{display: 'none'}} id="contained-button-file" type="file" 
+              name="bookFilePath"
+              value={singleBook.bookFilePath}
+              onChange={(e) =>
+                dispatch(
+                  handleChangeData({
+                    name: e.target.name,
+                    value: e.target.value,
+                  })
+                )
+              }
+              />
+              <Button variant="contained" component="span">
+                {Strings.uploadImage}
+              </Button>
+            </label>
+            </Grid> */}
             <Button
               type="submit"
               fullWidth

@@ -4,7 +4,7 @@ import { BookStateType } from "./bookType";
 // --------------------------------------------------- //
 // user model require field
 export interface BookModel {
-    id?: number;  
+    id: number;  
     bookName: string,
     bookPublishDate: string,
     authorName: string,
