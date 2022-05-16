@@ -99,3 +99,19 @@ export const userColumns: GridColDef[] = [
         `${params.row.state == BookStateType.STAYED ? Strings.stayed : Strings.barrowed}`,
   },
   ];
+
+  // Barrows Column
+  
+  export const BarrowsColumns: GridColDef[] = [
+    { field: 'id', headerName: Strings.id, width: 70 },
+    { field: 'fullName', headerName: Strings.barrow.toString(), width: 200 , 
+    valueGetter: (params: GridValueGetterParams) =>
+        `${params.row.member.fullName}`,
+  },
+    { field: 'bookName', headerName: Strings.bookName.toString(), width: 130 ,
+    valueGetter: (params: GridValueGetterParams) =>
+        `${params.row.book.bookName}`,
+  },
+  
+  { field: 'returnDate', headerName: Strings.returnDate, width: 100 },
+  ];

@@ -48,6 +48,8 @@ import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
 import CardMembershipRoundedIcon from '@mui/icons-material/CardMembershipRounded';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+import Barrows from "../pages/barrows/Barrows";
+import AddBarrow from "../pages/barrows/addBarrow";
 
 const drawerWidth = 240;
 
@@ -409,11 +411,11 @@ export default function MiniDrawer() {
           <Route path="book" element={<AddBook />}>
             <Route path=":id" element={<AddBook />} />
           </Route>
-          {/*
-          <Route path="reports" element={<Reports />} />
-          <Route path="report" element={<AddReport />}>
-            <Route path=":id" element={<AddReport />} />
-          </Route> */}
+          
+          <Route path="barrows" element={<Barrows/>} />
+          <Route path="barrow" element={<AddBarrow />}>
+            <Route path=":id" element={<AddBarrow />} />
+          </Route>
         </Routes>
       </Box>
     </Box>

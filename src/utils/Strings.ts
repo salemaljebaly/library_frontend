@@ -90,12 +90,13 @@ export default class{
   static student : string = ' طالب' ;
   static teacher : string = ' مدرس' ;
   static memberType : string = 'نوع العضوية';
+  static memberName : string = 'اسم العضو';
   // --------------------------------------------------- //
   // book
   static book : string = ' كتاب ';
   static bookImage : string = 'صورة الكتاب';
   static books : string = 'الكتب';
-  static bookName: string = 'الاسم';
+  static bookName: string = 'اسم الكتاب';
   static bookPublishDate: string = 'تاريخ النشر ';
   static authorName: string = 'المؤلف';
   static bookPages: string = 'عدد الصفحات';
@@ -110,5 +111,7 @@ export default class{
   // --------------------------------------------------- //
   // barrows
   static barrows : string = 'الإعارة';
+  static barrow : string = 'المستعير';
+  static addBarrow : string = ' اعارة ';
 
 }

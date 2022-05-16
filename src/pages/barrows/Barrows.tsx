@@ -1,15 +1,18 @@
 import { Add } from "@mui/icons-material";
-import { Avatar, Button, Grid, Paper, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DataTable from "../../components/table";
+import { BarrowModel } from "../../features/barrows/barrowsModel";
 import { UsersModel } from "../../features/users/userModel";
 import {
   deleteById,
   getAll,
-  resetSingle
-} from "../../features/books/booksSlice";
+  reset,
+  resetSingle,
+} from "../../features/barrows/barrowsSlice";
 import Strings from "../../utils/Strings";
+import { BarrowsColumns } from "../../components/models/columns";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import { green, red } from "@mui/material/colors";
@@ -17,15 +20,13 @@ import { DeleteRounded, RemoveRedEye } from "@mui/icons-material";
 
 import ConfirmDialog from "../../components/common/ConfirmDialog";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
-import { BookModel, BooksModel } from "../../features/books/booksModel";
 import { AppDispatch } from "../../app/store";
-import { BookColumns } from "../../components/models/columns";
 
 interface Props {
   userData: UsersModel[];
 }
 
-function Books() {
+function Barrows() {
   const navigate = useNavigate();
   // ---------------------------------------------------------------------------------- //
   const [confirmDialog, setConfirmDialog] = React.useState({
@@ -37,14 +38,14 @@ function Books() {
   // ---------------------------------------------------------------------------------- //
 
   const dispatch = useDispatch<AppDispatch>();
-  const { books, isError, isSucces, isLoading, message } = useSelector(
-    (state: any) => state.books
+  const { barrows, isError, isSucces, isLoading, message } = useSelector(
+    (state: any) => state.barrows
   );
 
   const { user } = useSelector((state: any) => state.auth);
 
-  let data: BooksModel[] = books as BooksModel[];
-  
+  let barrowData: BarrowModel[] = barrows as BarrowModel[];
+    
   useEffect(() => {
     if (user) {
       dispatch(getAll());
@@ -67,40 +68,15 @@ function Books() {
   const actionColumn = [
     {
       field: "action",
-      headerName: 'التحكم',
-      width: 220,
+      headerName: "التحكم",
+      width: 200,
       renderCell: (params: any) => {
         return (
-          <Box className="cellAction" sx={{ margin: "auto" }}>
-            {/* <Box
-              component={"a"}
-              sx={{
-                textDecoration: "none",
-                display: "inline-block",
-                marginRight: 2,
-                marginLeft: 2,
-              }}
-              target={"_blank"}
-              href={
-                params.row.bookFilePath != null
-                  ? `${Strings.API_URL}book/upload/view/${params.row.id}`
-                  : `#`
-              }
-            >
-              <Avatar
-                key={params.row.id}
-                alt={Strings.bookImage}
-                sx={{ width: 30, height: 30 }}
-                src={
-                  params.row.bookFilePath != null
-                    ? `${Strings.API_URL}book/upload/view/${params.row.id}`
-                    : `#`
-                }
-              />
-            </Box> */}
+          <Box className="cellAction">
             <Link
-              to={`/book/${params.row.id}`}
+              to={`/barrow/${params.row.id}`}
               style={{ textDecoration: "none" }}
+              onClick={() => {resetSingle()}}
             >
               <RemoveRedEye
                 sx={{ color: green[500], marginRight: 2, marginLeft: 2 }}
@@ -132,7 +108,7 @@ function Books() {
   return (
     // check of array of user has item then return table
     <>
- <Grid
+      <Grid
         container
         justifyContent="space-between"
         justifyItems="center"
@@ -140,29 +116,34 @@ function Books() {
       >
         <Grid item xs={6}>
           <Typography variant="h5" sx={{ margin: 1 }}>
-            {Strings.books}
+            {Strings.barrows}
           </Typography>
         </Grid>
-        <Grid item xs={6} alignItems="">
+        <Grid item xs={6} alignItems="" >
           <Button
             variant="outlined"
             endIcon={<Add />}
             sx={{
               maring: 16,
-              textAlign: "end",
-              float: "right",
+              textAlign : 'end',
+              float : 'right'
             }}
             onClick={() => {
               dispatch(resetSingle());
-              navigate("/book");
+              navigate("/barrow");
             }}
           >
-            {Strings.add + Strings.book}
+            {Strings.add + Strings.addBarrow}
           </Button>
         </Grid>
       </Grid>
-      {data?.length > 0 ? (
-        <DataTable row={BookColumns} data={data} action={actionColumn} />
+
+      {barrowData?.length > 0 ? (
+        <DataTable
+          row={BarrowsColumns}
+          data={barrowData}
+          action={actionColumn}
+        />
       ) : (
         <div>No data returned</div>
       )}
@@ -175,4 +156,4 @@ function Books() {
   );
 }
 
-export default Books;
+export default Barrows;

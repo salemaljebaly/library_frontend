@@ -21,10 +21,10 @@ const initialState : BarrowState = {
 // Register barrow
 export const add = createAsyncThunk(
   "barrow/add",
-  async ({bookId, barrowId, data} : {bookId : number, barrowId : number, data : BarrowModel}, thunkAPI) => {
+  async ({bookId, memberId, data} : {bookId : number, memberId : number, data : BarrowModel}, thunkAPI) => {
     try {
       console.log(thunkAPI);
-      return await authService.add(bookId, barrowId, data, user.access_token.toString());
+      return await authService.add(bookId, memberId, data, user.access_token.toString());
     } catch (error: any) {
       const message =
         (error.response &&

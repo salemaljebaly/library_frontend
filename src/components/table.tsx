@@ -17,13 +17,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { DepartmentModel } from "../features/department/departmentModel";
 import { MemberModel } from "../features/members/membersModel";
 import { BookModel } from "../features/books/booksModel";
+import { BarrowModel } from "../features/barrows/barrowsModel";
 // import { CitizensModel } from "../features/citizens/citizensModel";
 // import { PolicOfficeModel } from "../features/police_officess/policeOfficesModel";
 // import { AboutModel } from "../features/about/aboutModel";
 // import { ReportsModel } from "../features/reports/reportsModel";
 
 interface Props {
-  data: UsersModel[] | DepartmentModel[] | MemberModel[] | BookModel[];
+  data: UsersModel[] | DepartmentModel[] | MemberModel[] | BookModel[] | BarrowModel[];
   row : GridColDef[];
   action : any;
 }

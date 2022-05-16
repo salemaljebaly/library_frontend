@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 import { BarrowModel } from "./barrowsModel";
 
 const API_URL = 'http://localhost:4000/';
-const path = 'members';
+const path = 'barrow';
 
 // Register citizen
 const add = async ( bookId : number, memberId : number,data:BarrowModel, access_token: string) => {
@@ -25,10 +25,10 @@ const getAll = async (access_token: string) => {
       },
     }
   const response = await axios.get(API_URL + path , config);
-  let users : BarrowModel[];
+  let data : BarrowModel[];
   if(response.data){
-      users  = response.data
-      return users;
+      data  = response.data
+      return data;
       
   }
   return response.data;
