@@ -93,7 +93,7 @@ export default function SignIn() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              borderTop: `4px solid ${red[600]}`,
+              borderTop: `4px solid #383874`, 
               borderBottomLeftRadius: 8,
               borderBottomRightRadius: 8,
             }}
