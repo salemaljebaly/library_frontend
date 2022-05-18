@@ -96,7 +96,7 @@ function AddBarrow() {
     // git user by id
     if (id != undefined) {
       dispatch(findById(Number(id)));
-      console.log(singleBarrow.book.id)
+      console.log(singleBarrow.book.id!)
       setBookId(singleBarrow.book.id!);
       setMemberId(singleBarrow.member.id!);
     }
