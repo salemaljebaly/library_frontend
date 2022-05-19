@@ -33,6 +33,7 @@ import {
 import Strings from "../../utils/Strings";
 import { BookModel } from "../../features/books/booksModel";
 import { MemberModel } from "../../features/members/membersModel";
+import { MemberType } from "../../features/members/memberType.enum";
 
 function AddBarrow() {
   // ------------------------------------------------------------------------------- //
@@ -70,17 +71,34 @@ function AddBarrow() {
     if (id === undefined) {
       const singleUserObjectHasDataOrNot: boolean =
         Object.keys(singleBarrow).length > 0 && true;
-
         // console.log(`bookId ${bookId} memberId ${memberId} data ${singleBarrow}`)
-      dispatch(add({ bookId: bookId, memberId: memberId, data: singleBarrow }));
+        if(singleBarrow.memberType == MemberType.Student){
+          console.log("you must return book before 7 days");
+          console.log(nextDate(7));
+        } else {
+          console.log("you must return book before 14 days");
+          console.log(nextDate(14));
+        }
+      // dispatch(add({ bookId: bookId, memberId: memberId, data: singleBarrow }));
     } else {
       // update user by id
-      dispatch(updateById(singleBarrow));
+      if(singleBarrow.memberType == MemberType.Student){
+        console.log("you must return book before 7 days");
+        console.log(nextDate(7));
+      } else if(singleBarrow.memberType == MemberType.Teacher){
+        console.log("you must return book before 14 days");
+        console.log(nextDate(14));
+      }
+      // dispatch(updateById(singleBarrow));
       // ----------------------------------------------------------------------- //
     }
   };
   // ----------------------------------------------------------------------------------- //
-
+  const nextDate = (days : number) => {
+    var today = new Date();
+    var next = new Date(today.getFullYear(), today.getMonth(), today.getDate() + days).toLocaleDateString();
+    return next;
+  }
   // -------------------------------------------------------------- //
   // get user data from id passed when register init
   useEffect(() => {
@@ -264,6 +282,7 @@ function AddBarrow() {
                   })
                 )
               }
+              
               defaultValue={new Date().toLocaleDateString('en-ZA').toString()}
               sx={{ width: 220 }}
               InputLabelProps={{

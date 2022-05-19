@@ -13,7 +13,7 @@ import { red } from "@mui/material/colors";
 import AppLogo from "../../components/appLogo";
 import { login } from "../../features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Notification from "../../components/common/Notification";
 import { Severtity } from "../../utils/enum/Severity";
 import { AppDispatch } from "../../app/store";
@@ -60,8 +60,7 @@ export default function SignIn() {
         password: data.get("password")!.toString(),
       })
     );
-    if(isSucces) navigate("/");
-    
+    if(isSucces) navigate("/users");
     if (isError) {
       setNotify({
         isOpen : true,
@@ -76,9 +75,9 @@ export default function SignIn() {
   //TODO fix login when navigate to users
   React.useEffect(() => {
     if (user) {
-      navigate("/");
+      navigate("/users");
     }
-  }, [dispatch]);
+  }, [dispatch, isSucces]);
 
   return (
     <>

@@ -364,7 +364,6 @@ export default function MiniDrawer() {
         {/* <DataTable /> */}
         {/* <Register /> */}
         <Routes>
-          <Route path="/" element={<Dashboard />} />
           <Route path="/register" element={<Register />} />
           <Route path="users" element={<Users />}></Route>
           <Route path="/user" element={<Register />}>
