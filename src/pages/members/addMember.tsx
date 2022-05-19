@@ -83,7 +83,6 @@ import { MemberType } from "../../features/members/memberType.enum";
     useEffect(() => {
       // get all department 
       dispatch(getAll());
-      console.log(Departments);
       if(processDone){
         navigate('/members')
       }
@@ -92,7 +91,6 @@ import { MemberType } from "../../features/members/memberType.enum";
       // git user by id
       if (id != undefined) {
         dispatch(findById(Number(id)));
-        setDepartment(Number.parseInt(singleMember.department.id));
       }
       // ----------------------------------------------------------------------- //
     }, [dispatch, processDone]);
@@ -159,7 +157,8 @@ import { MemberType } from "../../features/members/memberType.enum";
                   name="department"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={department}
+                  // id != undefined ? singleMember.department.id :
+                  value={id != undefined ? singleMember.department.id : department}
                   label={Strings.departments}
                   onChange={(e) => setDepartment(Number.parseInt(e.target.value.toString()))}
                 >
