@@ -7,6 +7,7 @@ import { BarrowModel } from "../../features/barrows/barrowsModel";
 import { UsersModel } from "../../features/users/userModel";
 import {
   deleteById,
+  findById,
   getAll,
   reset,
   resetSingle,
@@ -76,7 +77,6 @@ function Barrows() {
             <Link
               to={`/barrow/${params.row.id}`}
               style={{ textDecoration: "none" }}
-              onClick={() => {resetSingle()}}
             >
               <RemoveRedEye
                 sx={{ color: green[500], marginRight: 2, marginLeft: 2 }}

@@ -53,10 +53,10 @@ function AddBarrow() {
   const navigate = useNavigate();
   // ----------------------------------------------------------------------------------- //
   // desctruct memebers from user state [ userSlice]
-  const { singleBarrow, isError, isSucces, isLoading, message, processDone } =
-    useSelector((state: any) => state.barrows);
-  // ----------------------------------------------------------------------------------- //
-  const { members } = useSelector((state: any) => state.members);
+  const { singleBarrow, barrows, isError, isSucces, isLoading, message, processDone } =
+  useSelector((state: any) => state.barrows);
+    // ----------------------------------------------------------------------------------- //
+    const { members } = useSelector((state: any) => state.members);
   // ----------------------------------------------------------------------------------- //
   const { books } = useSelector((state: any) => state.books);
   // ----------------------------------------------------------------------------------- //
@@ -86,7 +86,7 @@ function AddBarrow() {
   useEffect(() => {
     // get all books
     dispatch(getAllBooks())
-    // get all member
+    // // get all member
     dispatch(getAllMembers());
     if (processDone) {
       navigate("/barrows");
@@ -96,12 +96,9 @@ function AddBarrow() {
     // git user by id
     if (id != undefined) {
       dispatch(findById(Number(id)));
-      console.log(singleBarrow.book.id!)
-      setBookId(singleBarrow.book.id!);
-      setMemberId(singleBarrow.member.id!);
     }
     // ----------------------------------------------------------------------- //
-  }, [dispatch, processDone]);
+  }, [dispatch,processDone]);
   // ====================================================================================================== //
 
   // -------------------------------------------------------------- //
@@ -133,7 +130,7 @@ function AddBarrow() {
           alignItems: "center",
         }}
       >
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" onClick={() => console.log(singleBarrow?.book?.id)}>
           {id != undefined
             ? Strings.edit + Strings.barrows
             : Strings.add + Strings.barrows}
@@ -153,7 +150,7 @@ function AddBarrow() {
                   name="book"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={bookId}
+                  value={id != undefined ? singleBarrow?.book?.id : bookId}
                   label={Strings.departments}
                   onChange={(e) =>
                     setBookId(Number.parseInt(e.target.value.toString()))
@@ -178,7 +175,7 @@ function AddBarrow() {
                   name="member"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={memberId}
+                  value={ id != undefined ? singleBarrow?.member?.id : bookId}
                   label={Strings.departments}
                   onChange={(e) =>
                     setMemberId(Number.parseInt(e.target.value.toString()))
@@ -208,7 +205,7 @@ function AddBarrow() {
                   name="book"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={bookId}
+                  value={id != undefined ? singleBarrow?.member?.id : bookId}
                   label={Strings.departments}
                   onChange={(e) =>
                     setBookId(Number.parseInt(e.target.value.toString()))
@@ -233,7 +230,7 @@ function AddBarrow() {
                   name="member"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={memberId}
+                  value={id != undefined ? singleBarrow?.member?.id : bookId}
                   label={Strings.departments}
                   onChange={(e) =>
                     setMemberId(Number.parseInt(e.target.value.toString()))
