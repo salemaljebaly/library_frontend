@@ -7,6 +7,7 @@ import { MemberModel } from "../../features/members/membersModel";
 import { UsersModel } from "../../features/users/userModel";
 import {
   deleteById,
+  findById,
   getAll,
   reset,
   resetSingle,
@@ -76,6 +77,7 @@ function Members() {
             <Link
               to={`/member/${params.row.id}`}
               style={{ textDecoration: "none" }}
+              onClick={() => {dispatch(findById(Number(params.row.id)))}}
             >
               <RemoveRedEye
                 sx={{ color: green[500], marginRight: 2, marginLeft: 2 }}

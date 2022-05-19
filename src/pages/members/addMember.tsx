@@ -90,7 +90,8 @@ import { MemberType } from "../../features/members/memberType.enum";
       // TODO fix update
       // git user by id
       if (id != undefined) {
-        dispatch(findById(Number(id)));
+        // dispatch(findById(Number(id)));
+        console.log(singleMember);
       }
       // ----------------------------------------------------------------------- //
     }, [dispatch, processDone]);
