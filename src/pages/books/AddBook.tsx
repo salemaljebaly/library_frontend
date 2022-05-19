@@ -89,14 +89,6 @@ function AddBook() {
     // ----------------------------------------------------------------------- //
   }, [dispatch, processDone]);
   // -------------------------------------------------------------- //
-  const [value, setValue] = React.useState<Date | null>(
-    new Date('2014-08-18T21:11:54'),
-  );
-
-  const handleChange = (newValue: Date | null) => {
-    setValue(newValue);
-  };
-  // -------------------------------------------------------------- //
   if (isLoading) {
     return (
       <div>
@@ -228,22 +220,29 @@ function AddBook() {
             </Grid>
             
             <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
-                id="bookPublishDate"
-                label={Strings.bookPublishDate}
+            <TextField
+              id="bookPublishDate"
+              
+              name="bookPublishDate"
+              label={Strings.bookPublishDate}
+              type="date"
                 value={singleBook.bookPublishDate}
-                onChange={(e) =>
-                  dispatch(
-                    handleChangeData({
-                      name: e.target.name,
-                      value: e.target.value,
-                    })
-                  )
-                }
-                name="bookPublishDate"
-              />
+              onChange={(e) =>
+                dispatch(
+                  handleChangeData({
+                    name: e.target.name,
+                    value: e.target.value,
+                  })
+                )
+              }
+              defaultValue={new Date().toLocaleDateString('en-ZA').toString()}
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                
+                shrink: true,
+              }}
+              
+            />
             </Grid>
 
             <Grid item xs={12}  sm={6}>

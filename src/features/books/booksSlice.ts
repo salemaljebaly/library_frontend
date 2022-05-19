@@ -171,6 +171,7 @@ export const bookSlice = createSlice({
     },
     resetSingle: (state) => {
       state.singleBook = {
+        bookPages : 0,
         state: BookStateType.STAYED,
       };
       state.message = [];
