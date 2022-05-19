@@ -249,22 +249,29 @@ function AddBarrow() {
             </>
                 }
           <Grid item xs={12} >
-              <TextField
-                required
-                fullWidth
-                id="returnDate"
-                label={Strings.returnDate}
-                value={singleBarrow.returnDate}
-                onChange={(e) =>
-                  dispatch(
-                    handleChangeData({
-                      name: e.target.name,
-                      value: e.target.value,
-                    })
-                  )
-                }
-                name="returnDate"
-              />
+
+          <TextField
+              id="date"
+              name="returnDate"
+              label={Strings.returnDate}
+              type="date"
+              value={singleBarrow.returnDate}
+              onChange={(e) =>
+                dispatch(
+                  handleChangeData({
+                    name: e.target.name,
+                    value: e.target.value,
+                  })
+                )
+              }
+              defaultValue={new Date().toLocaleDateString('en-ZA').toString()}
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                
+                shrink: true,
+              }}
+              
+            />
             </Grid>
           </Grid>
           <Button

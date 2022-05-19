@@ -150,7 +150,7 @@ export default function MiniDrawer() {
 
   const [open, setOpen] = React.useState(false);
   const [menuSelect, setMenuSelected] = React.useState({
-    main: false,
+    
     user: false,
     department: false,
     member: false,
@@ -255,33 +255,13 @@ export default function MiniDrawer() {
 
         {/* // --------------------------------------------------------------- // */}
         <List>
-          <Link to="/" style={linkStyle}>
-            <ListItemButton
-              selected={menuSelect.main}
-              onClick={() =>
-                setMenuSelected({
-                  main: true,
-                  user: false,
-                  department: false,
-                  member: false,
-                  book: false,
-                  about: false,
-                })
-              }
-            >
-              <ListItemIcon>
-                <DashboardIcon sx={{ color: linkColor }} />
-              </ListItemIcon>
-              <ListItemText primary={Strings.menuMain} />
-            </ListItemButton>
-          </Link>
 
           <Link to="/users" style={linkStyle}>
             <ListItemButton
               selected={menuSelect.user}
               onClick={() =>
                 setMenuSelected({
-                  main: false,
+                  
                   user: true,
                   department: false,
                   member: false,
@@ -301,7 +281,6 @@ export default function MiniDrawer() {
             <ListItemButton
               selected={menuSelect.department}
               onClick={() => setMenuSelected({
-                main : false,
                 user : false,
                 department : true,
                 member :  false,
@@ -321,7 +300,6 @@ export default function MiniDrawer() {
             <ListItemButton
               selected={menuSelect.member}
               onClick={() => setMenuSelected({
-                main : false,
                 user : false,
                 department : false,
                 member :  true,
@@ -341,7 +319,6 @@ export default function MiniDrawer() {
             <ListItemButton
               selected={menuSelect.book}
               onClick={() => setMenuSelected({
-                main : false,
                 user : false,
                 department : false,
                 member :  false,
@@ -361,7 +338,6 @@ export default function MiniDrawer() {
             <ListItemButton
               selected={menuSelect.about}
               onClick={() => setMenuSelected({
-                main : false,
                 user : false,
                 department : false,
                 member :  false,
