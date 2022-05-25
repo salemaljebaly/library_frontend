@@ -79,7 +79,7 @@ function AddBarrow() {
           console.log("you must return book before 14 days");
           console.log(nextDate(14));
         }
-      // dispatch(add({ bookId: bookId, memberId: memberId, data: singleBarrow }));
+      dispatch(add({ bookId: bookId, memberId: memberId, data: singleBarrow }));
     } else {
       // update user by id
       if(singleBarrow.memberType == MemberType.Student){
@@ -89,7 +89,7 @@ function AddBarrow() {
         console.log("you must return book before 14 days");
         console.log(nextDate(14));
       }
-      // dispatch(updateById(singleBarrow));
+      dispatch(updateById(singleBarrow));
       // ----------------------------------------------------------------------- //
     }
   };

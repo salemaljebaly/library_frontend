@@ -49,7 +49,7 @@ export const userColumns: GridColDef[] = [
       valueGetter: (params: GridValueGetterParams) =>
         `${params.row.department.dep_name }`,
     },
-    { field: 'username', headerName: Strings.userName.toString(), width: 120 },
+    // { field: 'username', headerName: Strings.userName.toString(), width: 120 },
     { field: 'email', headerName: Strings.email.toString(), width: 200 },
     { field: 'isActive', headerName: Strings.isActive.toString(), width: 130 , 
     valueGetter: (params: GridValueGetterParams) =>
@@ -94,7 +94,7 @@ export const userColumns: GridColDef[] = [
       headerName: Strings.bookDescription,
       width: 200
     },
-    { field: 'state', headerName: Strings.memberType.toString(), width: 120 ,
+    { field: 'state', headerName: Strings.state.toString(), width: 80 ,
     valueGetter: (params: GridValueGetterParams) =>
         `${params.row.state == BookStateType.STAYED ? Strings.stayed : Strings.barrowed}`,
   },

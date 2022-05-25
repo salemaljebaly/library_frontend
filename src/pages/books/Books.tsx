@@ -68,7 +68,7 @@ function Books() {
     {
       field: "action",
       headerName: 'التحكم',
-      width: 220,
+      width: 120,
       renderCell: (params: any) => {
         return (
           <Box className="cellAction" sx={{ margin: "auto" }}>
