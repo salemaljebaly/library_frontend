@@ -1,8 +1,9 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import Strings from "../../utils/Strings";
 import { LoginModel, UserModel, UserModelFromToken, UsersModel } from "./userModel";
 
-const API_URL = 'http://localhost:4000/'
+const API_URL = Strings.API_URL;
 const path : string = 'users';
 // Register user
 const register = async (userData:UserModel) => {

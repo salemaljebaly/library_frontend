@@ -1,7 +1,8 @@
 import axios from "axios";
+import Strings from "../../utils/Strings";
 import { BookModel } from "./booksModel";
 
-const API_URL = "http://localhost:4000/";
+const API_URL = Strings.API_URL;
 const path = "book";
 
 // Register Book

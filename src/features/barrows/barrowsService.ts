@@ -1,8 +1,9 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import Strings from "../../utils/Strings";
 import { BarrowModel } from "./barrowsModel";
 
-const API_URL = 'http://localhost:4000/';
+const API_URL = Strings.API_URL;
 const path = 'barrow';
 
 // Register citizen
