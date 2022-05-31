@@ -7,7 +7,12 @@ const API_URL = Strings.API_URL;
 
 // login user
 const login = async (userData:LoginModel) => {
-    const response = await axios.post(API_URL + 'auth', userData);
+    
+    const response = await axios.post(API_URL + 'auth', userData, {
+       headers: {
+        'Access-Control-Allow-Origin': '*',
+       }
+    });
     let user : UserModelFromToken;
     if(response.data){
         user  = jwtDecode(response.data['access_token']);
