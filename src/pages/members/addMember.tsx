@@ -68,7 +68,6 @@ import { MemberType } from "../../features/members/memberType.enum";
       if (id === undefined) {
         const singleUserObjectHasDataOrNot: boolean =
           Object.keys(singleMember).length > 0 && true;
-  
         dispatch(add({member : singleMember, depId : department}));
       } else {
         // update user by id
@@ -216,9 +215,12 @@ import { MemberType } from "../../features/members/memberType.enum";
                   autoComplete="email"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={6} sx={{
+                display: 'none'
+              }}>
                 <TextField
                   required
+                  // hidden
                   fullWidth
                   id="username"
                   label={Strings.userName}
@@ -255,7 +257,7 @@ import { MemberType } from "../../features/members/memberType.enum";
                   
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12}>
                 <TextField
                   required
                   fullWidth
@@ -277,7 +279,9 @@ import { MemberType } from "../../features/members/memberType.enum";
 
               
               
-              <Grid item xs={12}>
+              <Grid item xs={12} sx={{
+                display: 'none'
+              }}>
                 <TextField
                   required
                   fullWidth

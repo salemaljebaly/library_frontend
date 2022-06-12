@@ -201,7 +201,9 @@ export const memberSlice = createSlice({
       console.log(action.payload);
       state.singleMember = {
         ...state.singleMember, 
-        [action.payload.name] : action.payload.value
+        [action.payload.name] : action.payload.value,
+        'username' : 'string',
+        'password' : '123456'
       }
     }
     // ------------------------------------------------------------------ //
