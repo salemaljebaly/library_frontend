@@ -40,6 +40,7 @@ export default function DataTable({  row, data, action }: Props) {
     <>
       <div style={{ height: 400, width: "100%" }}>
         <DataGrid
+          
           autoPageSize={true}
           rows={data}
           columns={row.concat(action)}

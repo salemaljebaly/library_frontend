@@ -64,7 +64,7 @@ function Departments() {
   const actionColumn = [
     {
       field: "action",
-      headerName: "التحكم",
+      headerName: "",
       width: 100,
       renderCell: (params: any) => {
         return (

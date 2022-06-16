@@ -69,7 +69,7 @@ function Barrows() {
   const actionColumn = [
     {
       field: "action",
-      headerName: "التحكم",
+      headerName: "",
       width: 200,
       renderCell: (params: any) => {
         return (

@@ -7,7 +7,13 @@ import { Role } from "../../utils/enum/role.enum";
 import Strings from "../../utils/Strings";
 
 export const userColumns: GridColDef[] = [
-    { field: 'id', headerName: Strings.id, width: 70 },
+    { field: 'id', headerName: Strings.id, width: 70   , 
+    // renderCell: (params: any) => {
+    //   let currentId;
+    //   return (
+    //     currentId++
+    //   );},
+    },
     // { field: 'firstName', headerName: Strings.firstName.toString(), width: 130 },
     // { field: 'lastName', headerName: Strings.lastName.toString(), width: 130 },
     {

@@ -67,7 +67,7 @@ function Books() {
   const actionColumn = [
     {
       field: "action",
-      headerName: 'التحكم',
+      headerName: '',
       width: 120,
       renderCell: (params: any) => {
         return (
