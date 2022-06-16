@@ -7,13 +7,13 @@ import { Role } from "../../utils/enum/role.enum";
 import Strings from "../../utils/Strings";
 
 export const userColumns: GridColDef[] = [
-    { field: 'id', headerName: Strings.id, width: 70   , 
-    // renderCell: (params: any) => {
-    //   let currentId;
-    //   return (
-    //     currentId++
-    //   );},
-    },
+    // { field: 'id', headerName: Strings.id, width: 70   , 
+    // // renderCell: (params: any) => {
+    // //   let currentId;
+    // //   return (
+    // //     currentId++
+    // //   );},
+    // },
     // { field: 'firstName', headerName: Strings.firstName.toString(), width: 130 },
     // { field: 'lastName', headerName: Strings.lastName.toString(), width: 130 },
     {
@@ -35,14 +35,14 @@ export const userColumns: GridColDef[] = [
 
   
   export const DepartmentColumns: GridColDef[] = [
-    { field: 'id', headerName: Strings.id, width: 70 },
+    // { field: 'id', headerName: Strings.id, width: 70 },
     { field: 'dep_code', headerName: Strings.dep_code.toString(), width: 300 },
     { field: 'dep_name', headerName: Strings.dep_name.toString(), width: 300 },
   ];
 
   
   export const MembersColumns: GridColDef[] = [
-    { field: 'id', headerName: Strings.id, width: 70 },
+    // { field: 'id', headerName: Strings.id, width: 70 },
     {
       field: 'fullName',
       headerName: Strings.fullName,
@@ -69,7 +69,7 @@ export const userColumns: GridColDef[] = [
     
 
   export const BookColumns: GridColDef[] = [
-    { field: 'id', headerName: Strings.id, width: 70 },
+    // { field: 'id', headerName: Strings.id, width: 70 },
     {
       field: 'bookName',
       headerName: Strings.bookName,
@@ -109,7 +109,7 @@ export const userColumns: GridColDef[] = [
   // Barrows Column
   
   export const BarrowsColumns: GridColDef[] = [
-    { field: 'id', headerName: Strings.id, width: 70 },
+    // { field: 'id', headerName: Strings.id, width: 70 },
     { field: 'fullName', headerName: Strings.barrow.toString(), width: 200 , 
     valueGetter: (params: GridValueGetterParams) =>
         `${params.row.member.fullName}`,
