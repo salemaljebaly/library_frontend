@@ -116,5 +116,7 @@ export default class{
   static addBarrow : string = ' اعارة ';
   static author: string = 'المؤلف'; 
   static authors: string = 'المؤلفين'; 
+  static bookCount: string = 'عدد النسخ';
+  static isbn: string = 'ISBN';
 
 }

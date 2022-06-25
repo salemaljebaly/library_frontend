@@ -36,6 +36,8 @@ import {
 } from "../../utils/enum/reporttype";
 import { AppDispatch } from "../../app/store";
 import { BookStateType, BookStateTypeArabic } from "../../features/books/bookType";
+import { getAll } from "../../features/author/authorSlice";
+import { AuthorModel } from "../../features/author/authorModel";
 
 function AddBook() {
   // ------------------------------------------------------------------------------- //
@@ -59,17 +61,21 @@ function AddBook() {
   const { singleBook, isError, isSucces, isLoading, message, processDone } =
     useSelector((state: any) => state.books);
   // ----------------------------------------------------------------------------------- //
+  const { Authors } = useSelector(
+    (state: any) => state.authors
+  );
+    // ----------------------------------------------------------------------------------- //
+    const [author , setAuthor] = React.useState(1)
+  // ----------------------------------------------------------------------------------- //
   // handle submit form
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (id === undefined) {
-      const singleUserObjectHasDataOrNot: boolean =
-        Object.keys(singleBook).length > 0 && true;
-      dispatch(add(singleBook));
+      dispatch(add({book: singleBook,authorId: author}));
     } else {
       // update user by id
-      dispatch(updateById(singleBook));
+      dispatch(updateById({bookData: singleBook, authorId: author}));
       // ----------------------------------------------------------------------- //
     }
   };
@@ -78,13 +84,16 @@ function AddBook() {
   // -------------------------------------------------------------- //
   // get user data from id passed when register init
   useEffect(() => {
+    // get all authors 
+    dispatch(getAll());
     if (processDone) {
       navigate("/books");
     }
     // ----------------------------------------------------------------------- //
     // git user by id
     if (id != undefined) {
-      dispatch(findById(Number(id)));
+      dispatch(findById(Number.parseInt(id)));
+      // setAuthor(Number.parseInt(singleBook.author.id))
     }
     // ----------------------------------------------------------------------- //
   }, [dispatch, processDone]);
@@ -144,31 +153,36 @@ function AddBook() {
             </Grid>
 
             <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
-                id="authorName"
-                label={Strings.authorName}
-                value={singleBook.authorName}
-                onChange={(e) =>
-                  dispatch(
-                    handleChangeData({
-                      name: e.target.name,
-                      value: e.target.value,
-                    })
-                  )
-                }
-                name="authorName"
-              />
-            </Grid>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  {Strings.authors}
+                </InputLabel>
+                <Select
+                  name="author"
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={ author}
+                  label={Strings.authors}
+                  onChange={(e) => setAuthor(Number.parseInt(e.target.value.toString()))}
+                >
+                  
+              {Authors.map((author : AuthorModel) => {
+                  return <MenuItem key={author.id} value={author.id}>{author.full_name}</MenuItem>
+              })}
+                </Select>
+              </FormControl>
+                </Grid>
 
-            <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={4}>
               <TextField
                 required
                 fullWidth
                 id="bookPages"
                 label={Strings.bookPages}
-                value={Number.parseInt(singleBook.bookPages)}
+                value={
+                  isNaN(Number.parseInt(singleBook.bookPages)) 
+                  ? 0 : Number.parseInt(singleBook.bookPages)
+                }
                 onChange={(e) =>
                   dispatch(
                     handleChangeData({
@@ -178,6 +192,49 @@ function AddBook() {
                   )
                 }
                 name="bookPages"
+              />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <TextField
+                required
+                fullWidth
+                id="bookCount"
+                label={Strings.bookCount}
+                value={
+                  isNaN(Number.parseInt(singleBook.bookCount)) 
+                  ? 0 : Number.parseInt(singleBook.bookCount)
+                }
+                onChange={(e) =>
+                  dispatch(
+                    handleChangeData({
+                      name: e.target.name,
+                      value: Number.parseInt(e.target.value),
+                    })
+                  )
+                }
+                name="bookCount"
+              />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <TextField
+                required
+                fullWidth
+                id="isbn"
+                label={Strings.isbn}
+                value={
+                  
+                  isNaN(Number.parseInt(singleBook.isbn)) 
+                  ? 0 : Number.parseInt(singleBook.isbn)
+                }
+                onChange={(e) =>
+                  dispatch(
+                    handleChangeData({
+                      name: e.target.name,
+                      value: Number.parseInt(e.target.value),
+                    })
+                  )
+                }
+                name="isbn"
               />
             </Grid>
 
@@ -219,31 +276,6 @@ function AddBook() {
               />
             </Grid>
             
-            <Grid item xs={12} sm={6}>
-            <TextField
-              id="bookPublishDate"
-              
-              name="bookPublishDate"
-              label={Strings.bookPublishDate}
-              type="date"
-                value={singleBook.bookPublishDate}
-              onChange={(e) =>
-                dispatch(
-                  handleChangeData({
-                    name: e.target.name,
-                    value: e.target.value,
-                  })
-                )
-              }
-              defaultValue={new Date().toLocaleDateString('en-ZA').toString()}
-              sx={{ width: 220 }}
-              InputLabelProps={{
-                
-                shrink: true,
-              }}
-              
-            />
-            </Grid>
 
             <Grid item xs={12}  sm={6}>
               <FormControl fullWidth>
@@ -273,6 +305,31 @@ function AddBook() {
                   </MenuItem>
                 </Select>
               </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField
+              id="bookPublishDate"
+              
+              name="bookPublishDate"
+              label={Strings.bookPublishDate}
+              type="date"
+                value={singleBook.bookPublishDate}
+              onChange={(e) =>
+                dispatch(
+                  handleChangeData({
+                    name: e.target.name,
+                    value: e.target.value,
+                  })
+                )
+              }
+              defaultValue={new Date().toLocaleDateString('en-ZA').toString()}
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                
+                shrink: true,
+              }}
+              
+            />
             </Grid>
             {/* TODO remove reterun date field */}
             {/* <Grid item xs={12}  sm={6}>

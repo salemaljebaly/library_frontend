@@ -44,7 +44,6 @@ function Authors() {
   let data: AuthorModel[] = Authors as AuthorModel[];
 
   useEffect(() => {
-    console.log(dispatch(getAll()));
     if (user) {
       dispatch(getAll());
     } else {

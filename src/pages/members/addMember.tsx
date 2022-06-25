@@ -66,8 +66,6 @@ import { MemberType } from "../../features/members/memberType.enum";
       event.preventDefault();
   
       if (id === undefined) {
-        const singleUserObjectHasDataOrNot: boolean =
-          Object.keys(singleMember).length > 0 && true;
         dispatch(add({member : singleMember, depId : department}));
       } else {
         // update user by id
@@ -90,7 +88,6 @@ import { MemberType } from "../../features/members/memberType.enum";
       // git user by id
       if (id != undefined) {
         // dispatch(findById(Number(id)));
-        console.log(singleMember);
       }
       // ----------------------------------------------------------------------- //
     }, [dispatch, processDone]);
@@ -158,7 +155,7 @@ import { MemberType } from "../../features/members/memberType.enum";
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   // id != undefined ? singleMember.department.id :
-                  value={id != undefined ? singleMember.department.id : department}
+                  value={id != undefined ? singleMember.department.id : department} 
                   label={Strings.departments}
                   onChange={(e) => setDepartment(Number.parseInt(e.target.value.toString()))}
                 >

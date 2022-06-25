@@ -86,9 +86,11 @@ export const userColumns: GridColDef[] = [
       width: 100
     },
     {
-      field: 'authorName',
+      field: 'author',
       headerName: Strings.authorName,
-      width: 100
+      width: 100,
+      valueGetter: (params: GridValueGetterParams) =>
+        `${params.row.author.full_name}`,
     },
     {
       field: 'bookPages',

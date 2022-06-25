@@ -20,7 +20,7 @@ const initialState : MemberState = {
 
 // ------------------------------------------------------------------------------------------- //
 // Register member
-export const add = createAsyncThunk(
+export const add = createAsyncThunk( 
   "member/add",
   async ({member, depId} : {member: MemberModel, depId : number}, thunkAPI) => {
     try {

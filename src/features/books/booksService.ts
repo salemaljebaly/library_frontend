@@ -6,13 +6,13 @@ const API_URL = Strings.API_URL;
 const path = "book";
 
 // Register Book
-const add = async (data: BookModel, access_token: string) => {
+const add = async (data: BookModel, authrorId : number, access_token: string) => {
   const config = {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
   };
-  const response = await axios.post(API_URL + path , data, config);
+  const response = await axios.post(API_URL + path + '/' + authrorId, data, config);
   if(data.bookFilePath != null){upload(data.bookFilePath, data.id, access_token)}
   return response.data;
 };  
@@ -63,6 +63,7 @@ const countAll = async (access_token: string) => {
 const updateById = async (
   access_token: string,
   id: number,
+  authrorId : number,
   userData: Partial<BookModel>
 ) => {
   const config = {
@@ -71,7 +72,7 @@ const updateById = async (
     },
   };
   await axios.patch(
-    API_URL + path + "/" + id,
+    API_URL + path + "/" + id + '/'+  authrorId, 
     userData,
     config
   );

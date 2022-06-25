@@ -6,6 +6,7 @@ import DataTable from "../../components/table";
 import { UsersModel } from "../../features/users/userModel";
 import {
   deleteById,
+  findById,
   getAll,
   resetSingle
 } from "../../features/books/booksSlice";
@@ -98,9 +99,11 @@ function Books() {
                 }
               />
             </Box> */}
-            <Link
+            <Link 
               to={`/book/${params.row.id}`}
               style={{ textDecoration: "none" }}
+              onClick={() => {dispatch(findById(Number(params.row.id)))}}
+
             >
               <RemoveRedEye
                 sx={{ color: green[500], marginRight: 2, marginLeft: 2 }}

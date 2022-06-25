@@ -22,10 +22,10 @@ const initialState : BookState = {
 // Register book
 export const add = createAsyncThunk(
   "book/add",
-  async (book: BookModel, thunkAPI) => {
+  async ({book, authorId} : {book: BookModel, authorId : number}, thunkAPI) => {
     try {
       console.log(thunkAPI);
-      return await authService.add(book, user.access_token.toString());
+      return await authService.add(book, authorId, user.access_token.toString());
     } catch (error: any) {
       const message =
         (error.response &&
@@ -99,10 +99,10 @@ export const deleteById = createAsyncThunk (
 // update book by id
 export const updateById = createAsyncThunk (
   "book/updateById",
-  async (bookData : BookModel, thunkAPI) => {
+  async ({bookData, authorId} : {bookData: BookModel, authorId : number}, thunkAPI) => {
     try {
       const {id, ...fields} = bookData;
-      return await authService.updateById(user.access_token, id!,fields);
+      return await authService.updateById(user.access_token, id!,authorId, fields);
     } catch (error: any) {
       const message =
         (error.response &&
