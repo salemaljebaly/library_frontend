@@ -324,7 +324,7 @@ export default function MiniDrawer() {
 
           <Link to="/authors" style={linkStyle}>
             <ListItemButton
-              selected={menuSelect.book}
+              selected={menuSelect.author}
               onClick={() => setMenuSelected({
                 user : false,
                 department : false,
@@ -338,7 +338,7 @@ export default function MiniDrawer() {
               <ListItemIcon>
                 <BadgeIcon  sx={{ color: linkColor }} />
               </ListItemIcon>
-              <ListItemText primary={Strings.books} />
+              <ListItemText primary={Strings.authors} />
             </ListItemButton>
           </Link>         
           <Link to="/books" style={linkStyle}>
