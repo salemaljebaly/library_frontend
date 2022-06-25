@@ -76,8 +76,8 @@ export default class{
     lng : 15.16091104212196
   };
   // --------------------------------------------------- //
-  // static API_URL : string = "http://localhost:4000/";
-  static API_URL : string = "http://158.101.167.198:4000/";
+  static API_URL : string = "http://localhost:4000/";
+  // static API_URL : string = "http://158.101.167.198:4000/";
   // --------------------------------------------------- //
   // الاقسام
   static departments : string = 'الاقسام';
@@ -114,5 +114,7 @@ export default class{
   static barrows : string = 'الإعارة';
   static barrow : string = 'المستعير';
   static addBarrow : string = ' اعارة ';
+  static author: string = 'المؤلف'; 
+  static authors: string = 'المؤلفين'; 
 
 }

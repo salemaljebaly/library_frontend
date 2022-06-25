@@ -22,6 +22,7 @@ import Strings from "../utils/Strings";
 import { ListItemButton, Menu, MenuItem, ListItem, Theme } from "@mui/material";
 import AppLogo from "./appLogo";
 import { AccountCircle } from "@mui/icons-material";
+import BadgeIcon from '@mui/icons-material/Badge';
 import theme from "../theme/theme";
 import DashBoardCards from "./dashBoardCards";
 import {
@@ -50,6 +51,8 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import Barrows from "../pages/barrows/Barrows";
 import AddBarrow from "../pages/barrows/addBarrow";
+import Authors from "../pages/author/Authors";
+import AddAuthor from "../pages/author/AddAuthor";
 
 const drawerWidth = 240;
 
@@ -154,6 +157,7 @@ export default function MiniDrawer() {
     user: false,
     department: false,
     member: false,
+    author : false,
     book: false,
     about: false,
   });
@@ -265,6 +269,7 @@ export default function MiniDrawer() {
                   user: true,
                   department: false,
                   member: false,
+                  author: false,
                   book: false,
                   about: false,
                 })
@@ -284,6 +289,7 @@ export default function MiniDrawer() {
                 user : false,
                 department : true,
                 member :  false,
+                author: false,
                 book : false,
                 about : false
             
@@ -303,6 +309,7 @@ export default function MiniDrawer() {
                 user : false,
                 department : false,
                 member :  true,
+                author: false,
                 book : false,
                 about : false
             
@@ -315,6 +322,25 @@ export default function MiniDrawer() {
             </ListItemButton>
           </Link>
 
+          <Link to="/authors" style={linkStyle}>
+            <ListItemButton
+              selected={menuSelect.book}
+              onClick={() => setMenuSelected({
+                user : false,
+                department : false,
+                member :  false,
+                author: true,
+                book : false,
+                about : false
+            
+              })}
+            >
+              <ListItemIcon>
+                <BadgeIcon  sx={{ color: linkColor }} />
+              </ListItemIcon>
+              <ListItemText primary={Strings.books} />
+            </ListItemButton>
+          </Link>         
           <Link to="/books" style={linkStyle}>
             <ListItemButton
               selected={menuSelect.book}
@@ -322,12 +348,14 @@ export default function MiniDrawer() {
                 user : false,
                 department : false,
                 member :  false,
+                author: false,
                 book : true,
                 about : false
             
               })}
             >
               <ListItemIcon>
+                
                 <MenuBookRoundedIcon  sx={{ color: linkColor }} />
               </ListItemIcon>
               <ListItemText primary={Strings.books} />
@@ -341,6 +369,7 @@ export default function MiniDrawer() {
                 user : false,
                 department : false,
                 member :  false,
+                author: false,
                 book : false,
                 about : true
             
@@ -381,6 +410,10 @@ export default function MiniDrawer() {
             <Route path=":id" element={<AddMember />} />
           </Route>
           
+          <Route path="authors" element={<Authors />} />
+          <Route path="author" element={<AddAuthor />}>
+            <Route path=":id" element={<AddAuthor />} />
+          </Route>
           
           <Route path="books" element={<Books />} />
           <Route path="book" element={<AddBook />}>

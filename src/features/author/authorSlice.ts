@@ -1,88 +1,28 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import authService from "./membersService";
-import { LoginModel, MemberModel, MemberState, MembersModel } from "./membersModel";
+import authorService from "./authorService";
+import { AuthorModel, AuthortState } from "./authorModel";
 import { RootState } from "../../app/store";
 import { UserModelFromToken } from "../users/userModel";
-import { MemberType } from "./memberType.enum";
-
-// Get member from local storage
+// Get user token from local storage
 const user = JSON.parse(localStorage.getItem("user")!) as UserModelFromToken;
-const initialState : MemberState = {
-  members: [], // check if there is member
-  singleMember : {},
+const initialState : AuthortState = {
+  Authors: [], // check if there is Authors
+  singleAuthor : {},
   isError: false,
   isSucces: false,
   isLoading: false,
-  processDone: false,
+  // use this property to check add and edit process
+  processDone : false,
   message: [],
-  count: 0
 };
 
 // ------------------------------------------------------------------------------------------- //
-// Register member
-export const add = createAsyncThunk(
-  "member/add",
-  async ({member, depId} : {member: MemberModel, depId : number}, thunkAPI) => {
+// Register Authors
+export const add = createAsyncThunk (
+  "Authors/add",
+  async (author: AuthorModel, thunkAPI) => {
     try {
-      console.log(thunkAPI);
-      return await authService.add(member,depId, user.access_token.toString());
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-// ------------------------------------------------------------------------------------------- //
-// login member
-export const login = createAsyncThunk(
-  "member/login",
-  async (member: LoginModel, thunkAPI) => {
-    try {
-
-      return await authService.login(member);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-// ------------------------------------------------------------------------------------------- //
-// get all members
-export const getAll = createAsyncThunk<MemberModel[], undefined, { state: RootState }> (
-  "member/getAll",
-  async (_, thunkAPI) => {
-    try {
-      const access_token :any = thunkAPI.getState().auth.user?.access_token;
-      return await authService.getAll(access_token);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-// ------------------------------------------------------------------------------------------- //
-// get all members
-export const countAll = createAsyncThunk<number, undefined, {state : RootState}> (
-  "member/countAll",
-  async (_, thunkAPI) => {
-    try {
-      const access_token :any = thunkAPI.getState().auth.user?.access_token;
-      return await authService.countAll(access_token) as number;
+      return await authorService.add(author, user.access_token.toString());
     } catch (error: any) {
       const message =
         (error.response &&
@@ -96,12 +36,32 @@ export const countAll = createAsyncThunk<number, undefined, {state : RootState}>
 );
 
 // ------------------------------------------------------------------------------------------- //
-// delete member by id
+// get all Authorss
+export const getAll = createAsyncThunk<AuthorModel[], undefined, { state: RootState }> (
+  "Authors/getAll",
+  async (_, thunkAPI) => {
+    try {
+      const access_token : any = thunkAPI.getState().auth.user?.access_token;
+      return await authorService.getAll(access_token);
+    } catch (error: any) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// ------------------------------------------------------------------------------------------- //
+// delete Authors by id
 export const deleteById = createAsyncThunk (
-  "member/deleteById",
+  "Authors/deleteById",
   async (id : number, thunkAPI) => {
     try {
-      return await authService.deleteById(user.access_token, id);
+      return await authorService.deleteById(user.access_token,id);
     } catch (error: any) {
       const message =
         (error.response &&
@@ -115,13 +75,13 @@ export const deleteById = createAsyncThunk (
 );
 
 // ------------------------------------------------------------------------------------------- //
-// update member by id
+// update Authors by id
 export const updateById = createAsyncThunk (
-  "member/updateById",
-  async ({memberData, depId}:{memberData : Partial<MemberModel>, depId : number}, thunkAPI) => {
+  "Authors/updateById",
+  async (author : Partial<AuthorModel>, thunkAPI) => {
     try {
-      const {id, ...fields} = memberData;
-      return await authService.updateById(user.access_token, id!, depId,fields);
+      const {id, ...fields} = author;
+      return await authorService.updateById(user.access_token,id!, fields);
     } catch (error: any) {
       const message =
         (error.response &&
@@ -134,32 +94,13 @@ export const updateById = createAsyncThunk (
   }
 );
 // ------------------------------------------------------------------------------------------- //
-// update member by id
+// update Authors by id
 export const findById = createAsyncThunk (
-  "member/findById",
+  "Authors/findById",
   async (id : number, thunkAPI) => {
     try {
-      // TODO check find member works
-      return await authService.findByID(user.access_token, id);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-// ------------------------------------------------------------------------------------------- //
-// update member by id
-export const searchIn = createAsyncThunk (
-  "member/searchIn",
-  async (keyword : string, thunkAPI) => {
-    try {
-      // TODO check find member works
-      return await authService.searchIn(user.access_token, keyword);
+      // TODO check find Authors works
+      return await authorService.findByID(user.access_token, id);
     } catch (error: any) {
       const message =
         (error.response &&
@@ -173,15 +114,15 @@ export const searchIn = createAsyncThunk (
 );
 // ------------------------------------------------------------------------------------------- //
 
-export const memberSlice = createSlice({
-  name: "member",
+export const Authorslice = createSlice({
+  name: "author",
   initialState,
   reducers: {
     // ------------------------------------------------------------------ //
     // reset state
     reset: (state) => {
-      state.members = [];
-      state.singleMember = null;
+      state.Authors = [];
+      state.singleAuthor = null;
       state.isLoading = false;
       state.isSucces = false;
       state.isError = false;
@@ -189,18 +130,18 @@ export const memberSlice = createSlice({
       state.message = [];
     },
     resetSingle: (state) => {
-      state.singleMember = {
-        memberType: MemberType.Student,
-        isActive: false
-      };
+      state.singleAuthor = {};
       state.message = [];
+      state.isLoading = false;
+      state.isSucces = false;
+      state.isError = false;
+      state.processDone = false;
     },
     // ------------------------------------------------------------------ //
     // use this function to changes in data 
     handleChangeData : (state ,action) => {
-      console.log(action.payload);
-      state.singleMember = {
-        ...state.singleMember, 
+      state.singleAuthor = {
+        ...state.singleAuthor, 
         [action.payload.name] : action.payload.value
       }
     }
@@ -219,56 +160,38 @@ export const memberSlice = createSlice({
       })
       .addCase(add.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isError = false;
         state.processDone = true;
-        state.members = action.payload;
+        state.Authors = action.payload;
       })
       .addCase(add.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.isSucces = false;
         state.processDone = false;
         state.message = action.payload as string[]; // get value when reject
-        state.members = [];
+        state.Authors = [];
       })
       // ------------------------------------------------------------------ //
-      // get All member
+      // get All Authors
       .addCase(getAll.pending, (state) => {
         state.isLoading = true;
-        state.isError = false;
+        state.Authors = [];
       })
       .addCase(getAll.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSucces = true;
-        state.isError = false;
         state.processDone = false;
-        state.members = action.payload;
+        state.Authors = action.payload;
       })
       .addCase(getAll.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.processDone = false;
         state.message = action.payload as string[]; // get value when reject
-        state.members = [];
+        state.Authors = [];
+        state.processDone = false;
       })
       // ------------------------------------------------------------------ //
-      // get count member
-      .addCase(countAll.pending, (state) => {
-        state.count = 0;
-        state.isError = false;
-      })
-      .addCase(countAll.fulfilled, (state, action) => {
-        state.count = action.payload;
-        state.isError = false;
-      })
-      .addCase(countAll.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.processDone = false;
-        state.message = action.payload as string[]; // get value when reject
-        state.count = 0;
-      })
-      // ------------------------------------------------------------------ //
-      // update member by id
+      // update Authors by id
       // TODO return fix  update message 
       .addCase(updateById.pending, (state) => {
         
@@ -280,82 +203,57 @@ export const memberSlice = createSlice({
       })
       .addCase(updateById.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isError = false;
-        state.isSucces = true;
         state.processDone = true;
-        state.members = action.payload;
+        state.Authors = action.payload;
       })
       .addCase(updateById.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.processDone = false;
         state.message = action.payload as string[]; // get value when reject
-        state.members = [];
+        state.Authors = [];
       })
       // ------------------------------------------------------------------ //
-      // find member by id
+      // find Authors by id
       // TODO return fix  delete message 
       .addCase(findById.pending, (state) => {
         state.isLoading = true;
-        state.singleMember = {};
-        state.isError = false;
       })
       .addCase(findById.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isError = false;
         state.isSucces = true;
+        state.singleAuthor =  action.payload;
         state.processDone = false;
-        state.singleMember =  action.payload;
       })
       .addCase(findById.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload as string[]; // get value when reject
-        state.singleMember = null;
+        state.singleAuthor = null;
+        
       })
       // ------------------------------------------------------------------ //
-      // find member by id
-      // TODO return fix  delete message 
-      .addCase(searchIn.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-      })
-      .addCase(searchIn.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isError = false;
-        state.isSucces = true;
-        state.processDone = false;
-        state.members = action.payload;
-      })
-      .addCase(searchIn.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload as string[]; // get value when reject
-        state.members = [];
-      })
-      // ------------------------------------------------------------------ //
-      // delete member by id
+      // delete Authors by id
       // TODO return fix  delete message 
       .addCase(deleteById.pending, (state) => {
         state.isLoading = true;
-        state.isError = false;
+
       })
       .addCase(deleteById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSucces = true;
-        state.isError = false;
         state.processDone = false;
-        state.members = state.members.filter((member : MemberModel)=> member.id !== action.payload)
+        state.Authors = state.Authors.filter((author : AuthorModel)=> author.id !== action.payload)
       })
       .addCase(deleteById.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload as string[]; // get value when reject
-        state.members = [];
+        state.Authors = [];
       })
       // ------------------------------------------------------------------ //
   },
 });
 
-export const { reset ,resetSingle, handleChangeData} = memberSlice.actions;
-export default memberSlice.reducer;
+export const { reset ,resetSingle, handleChangeData} = Authorslice.actions;
+export default Authorslice.reducer;

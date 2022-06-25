@@ -4,6 +4,7 @@ import userReducer from '../features/users/userSlice'
 import departmentReducer from '../features/department/departmentSlice'
 import memberReducer from '../features/members/membersSlice'
 import bookReducer from '../features/books/booksSlice'
+import authorReducer from '../features/author/authorSlice'
 import barrowReducer from '../features/barrows/barrowsSlice'
 
 export const store = configureStore({
@@ -13,7 +14,8 @@ export const store = configureStore({
     departments : departmentReducer,
     members : memberReducer,
     books : bookReducer, 
-    barrows : barrowReducer
+    barrows : barrowReducer,
+    authors : authorReducer
   },
 });
 

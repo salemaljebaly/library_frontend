@@ -41,6 +41,11 @@ export const userColumns: GridColDef[] = [
   ];
 
   
+  export const AuthorColumns: GridColDef[] = [
+    { field: 'full_name', headerName: Strings.fullName.toString(), width: 300 },
+  ];
+
+  
   export const MembersColumns: GridColDef[] = [
     // { field: 'id', headerName: Strings.id, width: 70 },
     {

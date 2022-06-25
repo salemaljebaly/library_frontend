@@ -215,9 +215,7 @@ import { MemberType } from "../../features/members/memberType.enum";
                   autoComplete="email"
                 />
               </Grid>
-              <Grid item xs={12} sm={6} sx={{
-                display: 'none'
-              }}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   // hidden
@@ -279,9 +277,7 @@ import { MemberType } from "../../features/members/memberType.enum";
 
               
               
-              <Grid item xs={12} sx={{
-                display: 'none'
-              }}>
+              <Grid item xs={12} >
                 <TextField
                   required
                   fullWidth
