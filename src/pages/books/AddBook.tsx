@@ -92,7 +92,7 @@ function AddBook() {
     // ----------------------------------------------------------------------- //
     // git user by id
     if (id != undefined) {
-      dispatch(findById(Number.parseInt(id)));
+      // dispatch(findById(Number.parseInt(id)));
       // setAuthor(Number.parseInt(singleBook.author.id))
     }
     // ----------------------------------------------------------------------- //
@@ -222,7 +222,6 @@ function AddBook() {
                 id="isbn"
                 label={Strings.isbn}
                 value={
-                  
                   isNaN(Number.parseInt(singleBook.isbn)) 
                   ? 0 : Number.parseInt(singleBook.isbn)
                 }

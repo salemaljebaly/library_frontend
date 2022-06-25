@@ -98,6 +98,16 @@ export const userColumns: GridColDef[] = [
       width: 80
     },
     {
+      field: 'bookCount',
+      headerName: Strings.bookCount,
+      width: 80
+    },
+    {
+      field: 'isbn',
+      headerName: Strings.isbn,
+      width: 80
+    },
+    {
       field: 'bookPublisher',
       headerName: Strings.bookPublisher,
       width: 150
