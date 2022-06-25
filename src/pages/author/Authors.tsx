@@ -35,13 +35,13 @@ function Authors() {
   // ---------------------------------------------------------------------------------- //
 
   const dispatch = useDispatch<AppDispatch>();
-  const { Author, isError, isSucces, isLoading, message } = useSelector(
+  const { Authors, isError, isSucces, isLoading, message } = useSelector(
     (state: any) => state.authors
   );
 
   const { user } = useSelector((state: any) => state.auth);
 
-  let data: AuthorModel[] = Author as AuthorModel[];
+  let data: AuthorModel[] = Authors as AuthorModel[];
 
   useEffect(() => {
     console.log(dispatch(getAll()));
