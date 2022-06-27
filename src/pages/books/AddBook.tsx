@@ -173,7 +173,7 @@ function AddBook() {
               </FormControl>
                 </Grid>
 
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={6}>
               <TextField
                 required
                 fullWidth
@@ -194,7 +194,7 @@ function AddBook() {
                 name="bookPages"
               />
             </Grid>
-            <Grid item xs={12} sm={4}>
+            {/* <Grid item xs={12} sm={4}>
               <TextField
                 required
                 fullWidth
@@ -214,8 +214,8 @@ function AddBook() {
                 }
                 name="bookCount"
               />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </Grid> */}
+            <Grid item xs={12} sm={6}>
               <TextField
                 required
                 fullWidth

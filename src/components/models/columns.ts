@@ -97,11 +97,11 @@ export const userColumns: GridColDef[] = [
       headerName: Strings.bookPages,
       width: 80
     },
-    {
-      field: 'bookCount',
-      headerName: Strings.bookCount,
-      width: 80
-    },
+    // {
+    //   field: 'bookCount',
+    //   headerName: Strings.bookCount,
+    //   width: 80
+    // },
     {
       field: 'isbn',
       headerName: Strings.isbn,
