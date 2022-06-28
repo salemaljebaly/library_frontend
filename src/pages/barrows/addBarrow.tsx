@@ -193,7 +193,7 @@ function AddBarrow() {
                   name="member"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={ id != undefined ? singleBarrow?.member?.id : bookId}
+                  value={ id != undefined ? singleBarrow?.member?.id : memberId}
                   label={Strings.departments}
                   onChange={(e) =>
                     setMemberId(Number.parseInt(e.target.value.toString()))
@@ -223,7 +223,7 @@ function AddBarrow() {
                   name="book"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={id != undefined ? singleBarrow?.member?.id : bookId}
+                  value={id != undefined ? singleBarrow?.book?.id : bookId}
                   label={Strings.departments}
                   onChange={(e) =>
                     setBookId(Number.parseInt(e.target.value.toString()))
@@ -248,7 +248,7 @@ function AddBarrow() {
                   name="member"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={id != undefined ? singleBarrow?.member?.id : bookId}
+                  value={id != undefined ? singleBarrow?.member?.id : memberId}
                   label={Strings.departments}
                   onChange={(e) =>
                     setMemberId(Number.parseInt(e.target.value.toString()))
