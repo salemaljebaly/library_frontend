@@ -146,7 +146,11 @@ export const userColumns: GridColDef[] = [
     }
     var day1 : any = new Date(); 
     var day2 : any = new Date(params.row.returnDate);
-    day2 = addDays(day2, 15);
+    if(params.row.member.memberType == MemberType.Student){
+      day2 = addDays(day2, 7);
+    } else if(params.row.member.memberType == MemberType.Teacher){
+      day2 = addDays(day2, 15);
+    }
     console.log(day2);
     var difference= Math.abs(day2-day1);
     var days = difference/(1000 * 3600 * 24)
