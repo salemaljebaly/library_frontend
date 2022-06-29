@@ -34,6 +34,7 @@ import Strings from "../../utils/Strings";
 import { BookModel } from "../../features/books/booksModel";
 import { MemberModel } from "../../features/members/membersModel";
 import { MemberType } from "../../features/members/memberType.enum";
+import { Severtity } from "../../utils/enum/Severity";
 
 function AddBarrow() {
   // ------------------------------------------------------------------------------- //
@@ -73,11 +74,10 @@ function AddBarrow() {
         Object.keys(singleBarrow).length > 0 && true;
         // console.log(`bookId ${bookId} memberId ${memberId} data ${singleBarrow}`)
         if(singleBarrow.memberType == MemberType.Student){
-          console.log("you must return book before 7 days");
-          console.log(nextDate(7));
+        
+            alert(' يجب عليك الكتاب قبل تاريخ' + nextDate(7)) 
         } else {
-          console.log("you must return book before 14 days");
-          console.log(nextDate(14));
+          alert(' يجب عليك الكتاب قبل تاريخ' + nextDate(14)) 
         }
       dispatch(add({ bookId: bookId, memberId: memberId, data: singleBarrow }));
     } else {
@@ -95,9 +95,9 @@ function AddBarrow() {
   };
   // ----------------------------------------------------------------------------------- //
   const nextDate = (days : number) => {
-    var today = new Date();
-    var next = new Date(today.getFullYear(), today.getMonth(), today.getDate() + days).toLocaleDateString();
-    return next;
+    var today = new Date(singleBarrow.returnDate);
+    today.addDays(days);
+    return today.toLocaleDateString().split('T')[0];
   }
   // -------------------------------------------------------------- //
   // get user data from id passed when register init
