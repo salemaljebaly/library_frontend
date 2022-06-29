@@ -93,11 +93,17 @@ function AddBarrow() {
       // ----------------------------------------------------------------------- //
     }
   };
+  function addDays(originalDate : any, days: any){
+    var cloneDate = new Date(originalDate.valueOf());
+    cloneDate.setDate(cloneDate.getDate() + days);
+    return cloneDate;
+  }
+
   // ----------------------------------------------------------------------------------- //
   const nextDate = (days : number) => {
     var today = new Date(singleBarrow.returnDate);
-    today.addDays(days);
-    return today.toLocaleDateString().split('T')[0];
+    addDays(today,days);
+    return addDays(today,days).toLocaleDateString().split('T')[0];
   }
   // -------------------------------------------------------------- //
   // get user data from id passed when register init

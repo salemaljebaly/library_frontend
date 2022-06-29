@@ -139,10 +139,14 @@ export const userColumns: GridColDef[] = [
   { field: 'returnDate', headerName: Strings.returnDate, width: 100 },
   { field: 'remainDate',headerName : 'الوقت المتبقي',  width: 150,
   valueGetter: (params: GridValueGetterParams)=> {
-    
+    function addDays(originalDate : any, days: any){
+      var cloneDate = new Date(originalDate.valueOf());
+      cloneDate.setDate(cloneDate.getDate() + days);
+      return cloneDate;
+    }
     var day1 : any = new Date(); 
     var day2 : any = new Date(params.row.returnDate);
-    day2.addDays(15);
+    day2 = addDays(day2, 15);
     console.log(day2);
     var difference= Math.abs(day2-day1);
     var days = difference/(1000 * 3600 * 24)
@@ -150,7 +154,7 @@ export const userColumns: GridColDef[] = [
     if(day1 >= day2){
       return ' انتهت مدة االاعارة '
     } else {
-      return   Math.floor(days) + ' يوم '
+      return   Math.floor(days) == 0 ? 'تبيقى يوم واحد' : Math.floor(days) + ' يوم '
     }
   }
 
