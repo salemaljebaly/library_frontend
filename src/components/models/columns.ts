@@ -1,10 +1,12 @@
-import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { GridColDef, GridRenderCellParams, GridValueGetterParams } from "@mui/x-data-grid";
 import { BookStateType } from "../../features/books/bookType";
 import { MemberType } from "../../features/members/memberType.enum";
 import { UserModel } from "../../features/users/userModel";
 import { ReportState, ReportStateArabic, ReportType, ReportTypeArabic } from "../../utils/enum/reporttype";
 import { Role } from "../../utils/enum/role.enum";
 import Strings from "../../utils/Strings";
+import Button from "@mui/material/Button";
+import { BarrowState, BarrowStateArabiceTranslate } from "../../features/barrows/barrowType.enum";
 
 export const userColumns: GridColDef[] = [
     // { field: 'id', headerName: Strings.id, width: 70   , 
@@ -151,7 +153,6 @@ export const userColumns: GridColDef[] = [
     } else if(params.row.member.memberType == MemberType.Teacher){
       day2 = addDays(day2, 15);
     }
-    console.log(day2);
     var difference= Math.abs(day2-day1);
     var days = difference/(1000 * 3600 * 24)
 
@@ -161,6 +162,20 @@ export const userColumns: GridColDef[] = [
       return   Math.floor(days) == 0 ? 'تبيقى يوم واحد' : Math.floor(days) + ' يوم '
     }
   }
+  },
+  { field: 'state', headerName: Strings.barrowState, width: 100 ,
 
-}
-  ];
+  valueGetter: (params: GridValueGetterParams) => {
+    switch(params.row.state){
+      case BarrowState.PENDING:
+      return BarrowStateArabiceTranslate.PENDING
+      case BarrowState.REJECTED:
+      return BarrowStateArabiceTranslate.REJECTED
+      case BarrowState.ACCEPTED:
+      return BarrowStateArabiceTranslate.ACCEPTED
+    }
+  }
+  
+},
+];
+

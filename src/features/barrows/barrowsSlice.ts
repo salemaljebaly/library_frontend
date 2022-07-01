@@ -98,10 +98,29 @@ export const deleteById = createAsyncThunk (
 // update barrow by id
 export const updateById = createAsyncThunk (
   "barrow/updateById",
-  async (data : BarrowModel, thunkAPI) => {
+  async (data : any, thunkAPI) => {
     try {
       const {id, ...fields} = data;
       return await authService.updateById(user.access_token, id!,fields);
+    } catch (error: any) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+// ------------------------------------------------------------------------------------------- //
+// update barrow by id
+export const updateBarrowStateById = createAsyncThunk (
+  "barrow/changeState",
+  async ({id, data}:{id: number, data: Partial<BarrowModel>}, thunkAPI) => {
+    try {
+      
+      return await authService.updateBarrowStateById(user.access_token, id!,data);
     } catch (error: any) {
       const message =
         (error.response &&
@@ -263,6 +282,31 @@ export const barrowSlice = createSlice({
         state.barrows = action.payload;
       })
       .addCase(updateById.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.processDone = false;
+        state.message = action.payload as string[]; // get value when reject
+        state.barrows = [];
+      })
+      // ------------------------------------------------------------------ //
+      // update barrow by id
+      // TODO return fix  update message 
+      .addCase(updateBarrowStateById.pending, (state) => {
+        
+        state.isLoading = true;
+        state.isError = false;
+        state.isSucces = false;
+        state.processDone = false;
+        state.message = [];
+      })
+      .addCase(updateBarrowStateById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSucces = true;
+        state.processDone = true;
+        state.barrows = action.payload;
+      })
+      .addCase(updateBarrowStateById.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.processDone = false;

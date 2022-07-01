@@ -8,6 +8,7 @@ export interface BarrowModel {
     returnDate: string;
     member : BarrowModel;
     book : BookModel;
+    state : any
 }
 
 // --------------------------------------------------- //

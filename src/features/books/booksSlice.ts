@@ -98,7 +98,7 @@ export const deleteById = createAsyncThunk (
 // ------------------------------------------------------------------------------------------- //
 // update book by id
 export const updateById = createAsyncThunk (
-  "book/updateById",
+  "book/updateById", 
   async ({bookData, authorId} : {bookData: BookModel, authorId : number}, thunkAPI) => {
     try {
       const {id, ...fields} = bookData;

@@ -1,7 +1,7 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import Strings from "../../utils/Strings";
-import { BarrowModel } from "./barrowsModel";
+import { BarrowModel, BarrowState } from "./barrowsModel";
 
 const API_URL = Strings.API_URL;
 const path = 'barrow';
@@ -49,13 +49,25 @@ const countAll = async (access_token: string) => {
 // update user from database
 const updateById  = async (access_token: string, id : number, data:Partial<BarrowModel>) => {
     
+  const config = {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+  const response = await axios.patch(API_URL + path + '/' + id , data, config);
+  const retrunCitizenData  = findByID(access_token, id);
+  return retrunCitizenData;
+}
+// update user from database
+const updateBarrowStateById  = async (access_token: string, id : number, data:Partial<BarrowModel>) => {
+    
     const config = {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
       }
     const response = await axios.patch(API_URL + path + '/' + id , data, config);
-    const retrunCitizenData  = findByID(access_token, id);
+    const retrunCitizenData  = getAll(access_token);
     return retrunCitizenData;
 }
 
@@ -113,7 +125,8 @@ const authService = {
     findByID,
     searchIn,
     logout,
-    countAll
+    countAll,
+    updateBarrowStateById
 }
 
 export default authService;

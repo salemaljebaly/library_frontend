@@ -1,5 +1,5 @@
 import { Add } from "@mui/icons-material";
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, ButtonGroup, Grid, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DataTable from "../../components/table";
@@ -10,7 +10,10 @@ import {
   findById,
   getAll,
   reset,
+  updateById,
   resetSingle,
+  handleChangeData,
+  updateBarrowStateById,
 } from "../../features/barrows/barrowsSlice";
 import Strings from "../../utils/Strings";
 import { BarrowsColumns } from "../../components/models/columns";
@@ -22,6 +25,7 @@ import { DeleteRounded, RemoveRedEye } from "@mui/icons-material";
 import ConfirmDialog from "../../components/common/ConfirmDialog";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import { AppDispatch } from "../../app/store";
+import { BarrowState } from "../../features/barrows/barrowType.enum";
 
 interface Props {
   userData: UsersModel[];
@@ -37,9 +41,13 @@ function Barrows() {
     onConfirm: () => {},
   });
   // ---------------------------------------------------------------------------------- //
+  const [barrowState, setBarrowState] = React.useState(
+     false
+  );
+  // ---------------------------------------------------------------------------------- //
 
   const dispatch = useDispatch<AppDispatch>();
-  const { barrows, isError, isSucces, isLoading, message } = useSelector(
+  const { barrows, singleBarrow,isError, isSucces, isLoading, message } = useSelector(
     (state: any) => state.barrows
   );
 
@@ -55,6 +63,11 @@ function Barrows() {
     }
   }, [dispatch]);
 
+  function setSecconds(originalDate : any, seconds: any){
+    var cloneDate = new Date(originalDate.valueOf());
+    cloneDate.setSeconds(cloneDate.getSeconds() + seconds);
+    return cloneDate;
+  }
   // ---------------------------------------------------------------------------------- //
   const handleDelete = (id: number) => {
     // TODO delete from users fix delete user
@@ -67,6 +80,29 @@ function Barrows() {
   // ---------------------------------------------------------------------------------- //
   // handle action [delete and view]
   const actionColumn = [
+    {
+      field: "stateAction",
+      headerName: Strings.changeState,
+      width: 130,
+      renderCell: (params: any) => {
+        return <>
+
+        <ButtonGroup variant="contained" aria-label="outlined button group"
+        >
+          <Button color="error"
+            onClick={() => {
+              dispatch(updateBarrowStateById({id : params.row.id, data: {state : BarrowState.REJECTED.toString()}}));
+            }
+            }>{Strings.reject}</Button>
+            <Button color="success"
+              onClick={() => {
+                dispatch(updateBarrowStateById({id : params.row.id, data: {state :  BarrowState.ACCEPTED.toString()}}));
+              }
+              }>{Strings.accept}</Button>
+        </ButtonGroup>
+        </>
+      }
+    },
     {
       field: "action",
       headerName: "",
