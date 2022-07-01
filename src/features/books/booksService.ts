@@ -79,6 +79,25 @@ const updateById = async (
   const retrunBookData = findByID(access_token, id);
   return retrunBookData;
 };
+// update user from database
+const updateBookById = async (
+  access_token: string,
+  id: number,
+  userData: Partial<BookModel>
+) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  };
+  await axios.patch(
+    API_URL + path + "/" + id , 
+    userData,
+    config
+  );
+  const retrunBookData = findByID(access_token, id);
+  return retrunBookData;
+};
 
 // update user from database
 const findByID = async (access_token: string, id: number) => {
@@ -132,6 +151,7 @@ const authService = {
   searchIn,
   logout,
   countAll,
+  updateBookById
 };
 
 export default authService;

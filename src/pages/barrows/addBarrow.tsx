@@ -30,11 +30,15 @@ import {
   findById,
   updateById,
 } from "../../features/barrows/barrowsSlice";
+import {
+   updateBookById
+} from "../../features/books/booksSlice";
 import Strings from "../../utils/Strings";
 import { BookModel } from "../../features/books/booksModel";
 import { MemberModel } from "../../features/members/membersModel";
 import { MemberType } from "../../features/members/memberType.enum";
 import { Severtity } from "../../utils/enum/Severity";
+import { BookStateType } from "../../features/books/bookType";
 
 function AddBarrow() {
   // ------------------------------------------------------------------------------- //
@@ -79,7 +83,13 @@ function AddBarrow() {
         } else {
           alert(' يجب عليك الكتاب قبل تاريخ' + nextDate(14)) 
         }
-      dispatch(add({ bookId: bookId, memberId: memberId, data: singleBarrow }));
+        dispatch(add({ bookId: bookId, memberId: memberId, data: singleBarrow }));
+        dispatch(updateBookById({
+          id: bookId,
+          bookData : {
+            state : BookStateType.BARROWED
+              }
+        }));
     } else {
       // update user by id
       if(singleBarrow.memberType == MemberType.Student){
